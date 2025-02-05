@@ -56,9 +56,14 @@ button {
     flex-flow: column wrap;
     justify-content: center;
     align-content: center;
+}
+
+li {
+    margin-right: 40px;
 
     color: white;
-    font-size: 1rem;
+    font-size: 1.4rem;
+    font-weight: 700;
 }
 
 .resultadoFinal {
