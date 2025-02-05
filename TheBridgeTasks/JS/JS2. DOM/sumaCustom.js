@@ -1,7 +1,9 @@
 const addnum = document.getElementById("butAdd");
 const sumar = document.getElementById("butSum");
+const reload = document.getElementById("butReload");
 addnum.addEventListener("click", addNumber);
 sumar.addEventListener("click", showResult);
+reload.addEventListener("click", pageReload);
 
 let num;
 let result = 0;
@@ -26,4 +28,10 @@ function showResult() {
     document.getElementById("resultadoFinal").innerText =
         "El resultado de la suma es: " + result;
     document.getElementById("butSum").style.visibility = "collapse";
+    document.getElementById("butAdd").style.visibility = "collapse";
+    document.getElementById("butReload").style.visibility = "visible";
+}
+
+function pageReload() {
+    location.reload();
 }

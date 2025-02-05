@@ -53,6 +53,10 @@ button {
     visibility: hidden;
 }
 
+.but3 {
+    visibility: collapse;
+}
+
 button:hover {
     background-color: rgb(120, 23, 83);
     color: white;
