@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Trello</title>
+        <link rel="stylesheet" href="trello.css" />
+        <script src="trello.js"></script>
+    </head>
+    <body>
+        <header>
+            <p class="logo" id="logo">Trello??</p>
+            <input class="buscar" type="text" placeholder="Buscar tareas..." />
+            <section class="bsheader">
+                <button class="bheader bh1" id="nueva" onclick="nuevaTarea()">
+                    + Nueva tarea
+                </button>
+                <button
+                    class="bheader bh2"
+                    id="config"
+                    onclick="configuracion()"
+                >
+                    Configuración
+                </button>
+            </section>
+        </header>
+        <main>
+            <!-- section*3.section.section$>h2+article*3.tarea.tarea$>p.estado.estado$+h3+p.descripcion -->
+
+            <!-- 1: Normal
+            2: Importante
+            3: Urgente -->
+
+            <section class="sections section1">
+                <h2>Pendiente</h2>
+                <article class="tarea tarea1">
+                    <p class="estado estado3">Urgente</p>
+                    <h3>Diseñar la página por contenedores</h3>
+                    <p class="descripcion">
+                        Crear el layout y elegir los colores principales.
+                    </p>
+                </article>
+                <article class="tarea tarea2">
+                    <p class="estado estado3">Urgente</p>
+                    <h3>Terminar ejercicio post/fotos</h3>
+                    <p class="descripcion">
+                        Terminar el ejercicio número 2 que está en Slack.
+                    </p>
+                </article>
+                <article class="tarea tarea3">
+                    <p class="estado estado1">Normal</p>
+                    <h3>Escribir las clases e ID's</h3>
+                    <p class="descripcion">Elegir los selectores.</p>
+                </article>
+            </section>
+            <section class="sections section2">
+                <h2>En progreso</h2>
+                <article class="tarea tarea4">
+                    <p class="estado estado2">Importante</p>
+                    <h3>Estilizar con CSS</h3>
+                    <p class="descripcion">Escribir el diseño con CSS.</p>
+                </article>
+            </section>
+            <section class="sections section3">
+                <h2>Completado</h2>
+                <article class="tarea tarea5">
+                    <p class="estado estado1">Normal</p>
+                    <h3>Configurar el repositorio</h3>
+                    <p class="descripcion">Subir el proyecto a GitHub.</p>
+                </article>
+                <article class="tarea tarea6">
+                    <p class="estado estado3">Urgente</p>
+                    <h3>Hacer ejercicio camisetas</h3>
+                    <p class="descripcion">
+                        Terminar ejercicio camisetas con HTML y Flexbox.
+                    </p>
+                </article>
+            </section>
+        </main>
+        <footer></footer>
+    </body>
+</html>

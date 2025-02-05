@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    overflow: auto;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #5b9eed;
+
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.contactos {
+    width: 70vw;
+
+    background-color: white;
+    border-radius: 20px 0px 20px 0px;
+    margin: 40px;
+
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+}
+
+.contacto {
+    width: 100%;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-content: space-evenly;
+
+    padding: 1.6rem;
+    gap: 30px;
+}
+
+.contacto:hover {
+    background-color: blanchedalmond;
+    cursor: pointer;
+}
+
+.foto {
+    max-width: 25%;
+    max-height: 25%;
+
+    border-radius: 4rem;
+}
+
+.datos {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-content: center;
+
+    gap: 10px;
+}
+
+p {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+address {
+    font-size: 1rem;
+    color: gray;
+}
+
+hr {
+    border: 1px solid gainsboro;
+    margin: 0px 20px 0px 20px;
+}
+
+@media only screen and (max-width: 600px) {
+    .contacto {
+        width: 100%;
+
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-content: center;
+
+        padding: 1rem;
+        gap: 20px;
+    }
+
+    .foto {
+        width: 35%;
+        height: 35%;
+
+        border-radius: 4rem;
+    }
+
+    p,
+    address {
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+}

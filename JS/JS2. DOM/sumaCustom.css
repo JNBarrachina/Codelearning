@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-content: center;
+
+    gap: 1rem;
+}
+
+.botones {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-content: center;
+
+    gap: 1rem;
+}
+
+.numlist {
+    list-style: inside;
+}

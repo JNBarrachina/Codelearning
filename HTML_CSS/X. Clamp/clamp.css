@@ -1,0 +1,23 @@
+* {box-sizing: border-box; margin: 0;}
+
+main {
+    border: clamp(0.2rem, -0.057rem + 0.302vw, 0.425rem) orange solid;
+    border-radius: 1rem;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: center;
+
+    gap: clamp(1rem, -0.287rem + 1.508vw, 2.125rem);
+}
+
+.caja {
+    border: clamp(0.2rem, -0.057rem + 0.302vw, 0.425rem) black solid;
+
+    max-width: clamp(24rem, -6.889rem + 36.181vw, 51rem);
+}
+
+p {
+    font-size: clamp(0.85rem, -0.244rem + 1.281vw, 1.806rem);
+}

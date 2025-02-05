@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    overflow: auto;
+    box-sizing: border-box;
+}
+
+main {
+    width: 100vw;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+header {
+    width: 100vw;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+
+    background-color: antiquewhite;
+    padding: 1.6rem;
+    gap: 1rem;
+}
+
+.nav_inicio {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+
+    gap: 1rem;
+}
+
+.logo {
+    font-size: 1.3rem;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.navitem {
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid green;
+    padding: 8px;
+}
+
+h1 {
+    width: 100%;
+
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.4rem;
+}
+
+.factura {
+    width: 70%;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    text-align: left;
+}
+
+th {
+    background-color: #04aa6d;
+    color: white;
+}
+
+.multimedia {
+    width: 80%;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-content: center;
+
+    gap: 2rem;
+}
+
+h2 {
+    padding-bottom: 1rem;
+}

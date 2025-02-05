@@ -1,0 +1,210 @@
+* {
+    margin: 0;
+    overflow: auto;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-content: center;
+
+    background-color: #212121;
+
+    gap: 1rem;
+}
+
+header {
+    width: 90%;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-content: center;
+
+    background-color: #2c2c2c;
+
+    padding: 1rem;
+}
+
+.logo {
+    color: white;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.buscar {
+    color: white;
+    border-radius: 4px;
+    border: #212121;
+    padding: 0.5rem;
+    font-size: 0.7rem;
+    font-weight: bold;
+    background-color: #444444;
+}
+
+.bheader {
+    color: white;
+    border-radius: 4px;
+    padding: 0.5rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.bheader:hover {
+    cursor: pointer;
+    background-color: #444444;
+}
+
+.bh1 {
+    border: 2px solid #e84c3d;
+    background-color: #e84c3d;
+}
+
+.bh2 {
+    border: 2px solid #3499dc;
+    background-color: #3499dc;
+}
+
+main {
+    width: 90%;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+
+    background-color: #212121;
+    gap: 1rem;
+}
+
+.sections {
+    width: 32%;
+    min-width: 300px;
+
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+
+    background-color: #2c2c2c;
+    border-radius: 1rem;
+
+    padding: 1rem;
+    gap: 1rem;
+}
+
+h2,
+h3,
+.logo {
+    color: white;
+}
+
+.descripcion {
+    color: #9e9e9e;
+    font-size: 0.8rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+h3 {
+    font-size: 1rem;
+}
+
+.tarea {
+    width: 100%;
+
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+
+    background-color: #3a3a3a;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.tarea:hover {
+    background-color: #4a4a4a;
+    cursor: pointer;
+}
+
+.tarea:active {
+    border: 1px solid #e84c3d;
+    transform: scale(0.98);
+}
+
+.estado {
+    width: fit-content;
+
+    font-size: 0.7rem;
+    color: white;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.estado1 {
+    background-color: #28ae60;
+}
+
+.estado2 {
+    background-color: #f29b12;
+}
+
+.estado3 {
+    background-color: #e84c3d;
+}
+
+@media only screen and (max-width: 690px) {
+    .sections {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    header {
+        width: 90%;
+
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-content: center;
+
+        background-color: #2c2c2c;
+
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .logo {
+        align-self: center;
+        color: white;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .buscar {
+        color: white;
+        border-radius: 4px;
+        border: #212121;
+        padding: 0.5rem;
+        font-size: 0.7rem;
+        font-weight: bold;
+        background-color: #444444;
+    }
+
+    .bheader {
+        color: white;
+        border-radius: 4px;
+        padding: 0.5rem;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+    }
+}

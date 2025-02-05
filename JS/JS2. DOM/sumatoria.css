@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+
+    background-color: white;
+}
+
+.sumbox {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-content: center;
+
+    gap: 1rem;
+}
+
+section {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.colorTitulo {
+    font-size: 1.8rem;
+    color: green;
+}
+
+.bsuma {
+    padding: 0.4rem;
+    background-color: slateblue;
+    color: white;
+    font-weight: bold;
+}
+
+.bsuma:hover {
+    background-color: black;
+    transform: scale(1.05);
+}
