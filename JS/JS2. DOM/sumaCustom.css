@@ -49,6 +49,11 @@ button {
     cursor: pointer;
 }
 
+button:hover {
+    background-color: rgb(120, 23, 83);
+    color: white;
+}
+
 .numlist {
     list-style: inside;
 
