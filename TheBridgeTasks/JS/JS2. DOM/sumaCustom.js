@@ -17,10 +17,13 @@ function addNumber() {
         let numItem = document.createElement("li");
         numItem.innerText = "Número añadido: " + num;
         document.getElementById("listnum").appendChild(numItem);
+
+        document.getElementById("butSum").style.visibility = "visible";
     }
 }
 
 function showResult() {
     document.getElementById("resultadoFinal").innerText =
         "El resultado de la suma es: " + result;
+    document.getElementById("butSum").style.visibility = "collapse";
 }
