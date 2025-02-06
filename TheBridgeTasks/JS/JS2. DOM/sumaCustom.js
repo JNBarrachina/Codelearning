@@ -34,4 +34,5 @@ function showResult() {
 
 function pageReload() {
     location.reload();
+    document.getElementById("intronum").value = "";
 }
