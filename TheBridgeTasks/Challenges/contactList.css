@@ -82,11 +82,7 @@ button:hover{
     align-content: space-evenly;
 }
 
-.inicial{
-    color: blue;
-}
-
-.datosContacto{
+.contactData{
     display: flex;
     flex-flow: column wrap;
     justify-content: space-evenly;
