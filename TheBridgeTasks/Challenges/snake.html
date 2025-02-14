@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnakeGame</title>
+    <link rel="stylesheet" href="snake.css">
+</head>
+
+<body>
+    <h1>SnakeGame</h1>
+    <p>Selecciona la casilla donde iniciar la partida. (El movimiento se inicia a la derecha)</p>
+    <article class="snakeBox" id="sBox">
+        <div class="fila fila1">
+            <columna class="columna columna00" id="00"></columna>
+            <columna class="columna columna01" id="01"></columna>
+            <columna class="columna columna02" id="02"></columna>
+            <columna class="columna columna03" id="03"></columna>
+            <columna class="columna columna04" id="04"></columna>
+            <columna class="columna columna05" id="05"></columna>
+            <columna class="columna columna06" id="06"></columna>
+            <columna class="columna columna07" id="07"></columna>
+            <columna class="columna columna08" id="08"></columna>
+            <columna class="columna columna09" id="09"></columna>
+        </div>
+        <div class="fila fila2">
+            <columna class="columna columna10" id="10"></columna>
+            <columna class="columna columna11" id="11"></columna>
+            <columna class="columna columna12" id="12"></columna>
+            <columna class="columna columna13" id="13"></columna>
+            <columna class="columna columna14" id="14"></columna>
+            <columna class="columna columna15" id="15"></columna>
+            <columna class="columna columna16" id="16"></columna>
+            <columna class="columna columna17" id="17"></columna>
+            <columna class="columna columna18" id="18"></columna>
+            <columna class="columna columna19" id="19"></columna>
+        </div>
+        <div class="fila fila3">
+            <columna class="columna columna20" id="20"></columna>
+            <columna class="columna columna21" id="21"></columna>
+            <columna class="columna columna22" id="22"></columna>
+            <columna class="columna columna23" id="23"></columna>
+            <columna class="columna columna24" id="24"></columna>
+            <columna class="columna columna25" id="25"></columna>
+            <columna class="columna columna26" id="26"></columna>
+            <columna class="columna columna27" id="27"></columna>
+            <columna class="columna columna28" id="28"></columna>
+            <columna class="columna columna29" id="29"></columna>
+        </div>
+        <div class="fila fila4">
+            <columna class="columna columna30" id="30"></columna>
+            <columna class="columna columna31" id="31"></columna>
+            <columna class="columna columna32" id="32"></columna>
+            <columna class="columna columna33" id="33"></columna>
+            <columna class="columna columna34" id="34"></columna>
+            <columna class="columna columna35" id="35"></columna>
+            <columna class="columna columna36" id="36"></columna>
+            <columna class="columna columna37" id="37"></columna>
+            <columna class="columna columna38" id="38"></columna>
+            <columna class="columna columna39" id="39"></columna>
+        </div>
+        <div class="fila fila5">
+            <columna class="columna columna40" id="40"></columna>
+            <columna class="columna columna41" id="41"></columna>
+            <columna class="columna columna42" id="42"></columna>
+            <columna class="columna columna43" id="43"></columna>
+            <columna class="columna columna44" id="44"></columna>
+            <columna class="columna columna45" id="45"></columna>
+            <columna class="columna columna46" id="46"></columna>
+            <columna class="columna columna47" id="47"></columna>
+            <columna class="columna columna48" id="48"></columna>
+            <columna class="columna columna49" id="49"></columna>
+        </div>
+        <div class="fila fila6">
+            <columna class="columna columna50" id="50"></columna>
+            <columna class="columna columna51" id="51"></columna>
+            <columna class="columna columna52" id="52"></columna>
+            <columna class="columna columna53" id="53"></columna>
+            <columna class="columna columna54" id="54"></columna>
+            <columna class="columna columna55" id="55"></columna>
+            <columna class="columna columna56" id="56"></columna>
+            <columna class="columna columna57" id="57"></columna>
+            <columna class="columna columna58" id="58"></columna>
+            <columna class="columna columna59" id="59"></columna>
+        </div>
+        <div class="fila fila7">
+            <columna class="columna columna60" id="60"></columna>
+            <columna class="columna columna61" id="61"></columna>
+            <columna class="columna columna62" id="62"></columna>
+            <columna class="columna columna63" id="63"></columna>
+            <columna class="columna columna64" id="64"></columna>
+            <columna class="columna columna65" id="65"></columna>
+            <columna class="columna columna66" id="66"></columna>
+            <columna class=" columna columna67" id="67"></columna>
+            <columna class="columna columna68" id="68"></columna>
+            <columna class="columna columna69" id="69"></columna>
+        </div>
+        <div class="fila fila8">
+            <columna class="columna columna70" id="70"></columna>
+            <columna class="columna columna71" id="71"></columna>
+            <columna class="columna columna72" id="72"></columna>
+            <columna class="columna columna73" id="73"></columna>
+            <columna class="columna columna74" id="74"></columna>
+            <columna class="columna columna75" id="75"></columna>
+            <columna class="columna columna76" id="76"></columna>
+            <columna class="columna columna77" id="77"></columna>
+            <columna class="columna columna78" id="78"></columna>
+            <columna class="columna columna79" id="79"></columna>
+        </div>
+        <div class="fila fila9">
+            <columna class="columna columna80" id="80"></columna>
+            <columna class="columna columna81" id="81"></columna>
+            <columna class="columna columna82" id="82"></columna>
+            <columna class="columna columna83" id="83"></columna>
+            <columna class="columna columna84" id="84"></columna>
+            <columna class="columna columna85" id="85"></columna>
+            <columna class="columna columna86" id="86"></columna>
+            <columna class="columna columna87" id="87"></columna>
+            <columna class="columna columna88" id="88"></columna>
+            <columna class="columna columna89" id="89"></columna>
+        </div>
+        <div class="fila fila10">
+            <columna class="columna columna90" id="90"></columna>
+            <columna class="columna columna91" id="91"></columna>
+            <columna class="columna columna92" id="92"></columna>
+            <columna class="columna columna93" id="93"></columna>
+            <columna class="columna columna94" id="94"></columna>
+            <columna class="columna columna95" id="95"></columna>
+            <columna class="columna columna96" id="96"></columna>
+            <columna class="columna columna97" id="97"></columna>
+            <columna class="columna columna98" id="98"></columna>
+            <columna class="columna columna99" id="99"></columna>
+        </div>
+    </article>
+    <script src="snake.js"></script>
+</body>
+
+</html>
