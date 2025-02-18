@@ -22,8 +22,9 @@ h1 {
 }
 
 .snakeBox{
-    width: 70%;
-    height: 70%;
+    width: 60%;
+    max-width: 450px;
+    height: 60%;
 
     display: flex;
     flex-flow: row wrap;
@@ -58,6 +59,3 @@ h1 {
     background-color: gray;
 }
 
-.paintSnake{
-    background-color: green;
-}
