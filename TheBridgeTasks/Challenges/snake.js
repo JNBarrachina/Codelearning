@@ -21,13 +21,14 @@ function startGame(event) {
 function movement(snake) {
 
     setInterval(() => {
-    deleteSnake(snake);
-    for (let e = snake.length - 1; e > 0; e--){
-        snake[e] = snake[e - 1];
-    }
-    snake[0] = snake [0] + mHead;
-    paintSnake(snake);
-    eatFood(snake, food);
+        deleteSnake(snake);
+        for (let e = snake.length - 1; e > 0; e--){
+            snake[e] = snake[e - 1];
+        }
+        snake[0] = snake [0] + mHead;
+        checkLimits(snake);
+        paintSnake(snake);
+        eatFood(snake, food);
     }, speed);
 }
 
@@ -97,6 +98,12 @@ function eatFood(snake, food){
 
 function checkLimits(snake){
     if (snake[0] < 0 || snake[0] > 400){
+        gameover();
+    }
+    else if ((snake[0] % 20 == 0) && (mHead == 1)){
+        gameover();
+    }
+    else if ((snake[0] % 20 == 19) && (mHead == -1)){
         gameover();
     }
     else{
