@@ -3,8 +3,10 @@ start.addEventListener("click", startGame);
 addEventListener("keydown", direction);
 
 let mHead = 1;
-let speed = 200;
+let speed = 120;
 let points = 0;
+let maxFood = 400;
+let food = [];
 
 function startGame(event) {
     let initID = parseInt(event.target.id);
@@ -12,6 +14,7 @@ function startGame(event) {
     snake.push(initID, initID - 1);
 
     paintSnake(snake);
+    addFood(maxFood);
     movement(snake);
 }
 
@@ -24,8 +27,8 @@ function movement(snake) {
     }
     snake[0] = snake [0] + mHead;
     paintSnake(snake);
+    eatFood(snake, food);
     }, speed);
-
 }
 
 function deleteSnake(snake) {
@@ -37,11 +40,13 @@ function deleteSnake(snake) {
 }
 
 function paintSnake(snake) {
-    
+
+    checkLimits(snake); 
+
     for (let p = 0; p < snake.length; p++){
         document.getElementById(snake[p]).style.backgroundColor = "greenyellow";
     }
-    
+        
     return;
 }
 
@@ -71,9 +76,35 @@ function direction(event){
     }
 }
 
-function food(){
+function addFood(maxFood){
+    let foodpiece = Math.floor(Math.random() * maxFood);
+    food.push(foodpiece);
+    document.getElementById(food).style.backgroundColor = "red";
+}
+
+function eatFood(snake, food){
+
+    for (let f = 0; f < food.length; f++){
+        if (snake[0] == food[f]){
+            food.splice(f, 1);
+            addFood(maxFood);
+
+            points += 10;
+            document.getElementById("pInfo").innerText = "Points: " + points;
+        }
+    }
+}
+
+function checkLimits(snake){
+    if (snake[0] < 0 || snake[0] > 400){
+        gameover();
+    }
+    else{
+        return;
+    }
 }
 
 function gameover(){
-    alert("YOU LOOSE")
+    alert("YOU LOOSE\nPoints: " + points);
+    location.reload();
 }
