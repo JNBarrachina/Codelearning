@@ -44,13 +44,12 @@ function deleteSnake(snake) {
 
 function paintSnake(snake) {
 
-    checkLimits(snake); 
+    checkLimits(snake);
 
     for (let p = 0; p < snake.length; p++){
         document.getElementById(snake[p]).style.backgroundColor = snakeColor;
     }
     
-    console.log(snake);
     return;
 }
 
@@ -108,7 +107,17 @@ function addFood(maxFood){
     let foodpiece = Math.floor(Math.random() * maxFood);
     food.push(foodpiece);
     document.getElementById(food).style.backgroundColor = "red";
+    
 }
+// function addFood(maxFood) {
+//     let foodpiece;
+
+//     do {
+//         foodpiece = Math.floor(Math.random() * maxFood);
+//     } while (snake.includes(foodpiece));
+//     food.push(foodpiece);
+//     document.getElementById(food).style.backgroundColor = "red";
+// }
 
 function eatFood(snake, food){
 
@@ -127,13 +136,6 @@ function eatFood(snake, food){
 function growSnake(snake){
     let gap = snake[snake.length - 1] - snake[snake.length - 2];
     snake.push(snake[snake.length - 1] + gap);
-
-    if (snake.length > 10){
-        snakeColor = "orange";
-    }
-    else if (snake.length > 20){
-        snakeColor = "violet";
-    }
 
     return;
 }
