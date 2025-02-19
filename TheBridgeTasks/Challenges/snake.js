@@ -16,7 +16,7 @@ function startGame(event) {
     snake.push(initID, initID - 1);
 
     paintSnake(snake);
-    addFood(maxFood);
+    addFood(maxFood, snake);
     movement(snake);
 }
 
@@ -28,6 +28,7 @@ function movement(snake) {
             snake[e] = snake[e - 1];
         }
         snake[0] = snake [0] + mHead;
+
         checkLimits(snake);
         paintSnake(snake);
         eatFood(snake, food);
@@ -43,9 +44,6 @@ function deleteSnake(snake) {
 }
 
 function paintSnake(snake) {
-
-    checkLimits(snake);
-
     for (let p = 0; p < snake.length; p++){
         document.getElementById(snake[p]).style.backgroundColor = snakeColor;
     }
@@ -102,33 +100,26 @@ function direction(event){
             break;
     }
 }
+function addFood(maxFood, snake) {
+    let foodpiece;
 
-function addFood(maxFood){
-    let foodpiece = Math.floor(Math.random() * maxFood);
+    do {
+        foodpiece = Math.floor(Math.random() * maxFood);
+    } while (snake.includes(foodpiece));
+
     food.push(foodpiece);
     document.getElementById(food).style.backgroundColor = "red";
-    
 }
-// function addFood(maxFood) {
-//     let foodpiece;
-
-//     do {
-//         foodpiece = Math.floor(Math.random() * maxFood);
-//     } while (snake.includes(foodpiece));
-//     food.push(foodpiece);
-//     document.getElementById(food).style.backgroundColor = "red";
-// }
 
 function eatFood(snake, food){
 
     for (let f = 0; f < food.length; f++){
         if (snake[0] == food[f]){
             food.splice(f, 1);
-            addFood(maxFood);
+            addFood(maxFood,snake);
             growSnake(snake);
 
-            points += 10;
-            document.getElementById("pInfo").innerText = "Points: " + points;
+            score();
         }
     }
 }
@@ -153,6 +144,22 @@ function checkLimits(snake){
     else{
         return;
     }
+}
+
+function autokill(snake){
+    for (let k = 0; k < snake.length - 1; i++){
+        if (snake[0] == snake[k]){
+            gameover();
+        }
+        else{
+            return;
+        }
+    }
+}
+
+function score(){
+    points += 10;
+    document.getElementById("pInfo").innerText = "Points: " + points;
 }
 
 function gameover(){
