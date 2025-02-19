@@ -7,6 +7,8 @@ let speed = 120;
 let points = 0;
 let maxFood = 400;
 let food = [];
+let snakeColor = "greenyellow";
+let prevDir = "ArrowRight";
 
 function startGame(event) {
     let initID = parseInt(event.target.id);
@@ -45,9 +47,10 @@ function paintSnake(snake) {
     checkLimits(snake); 
 
     for (let p = 0; p < snake.length; p++){
-        document.getElementById(snake[p]).style.backgroundColor = "greenyellow";
+        document.getElementById(snake[p]).style.backgroundColor = snakeColor;
     }
-        
+    
+    console.log(snake);
     return;
 }
 
@@ -57,21 +60,45 @@ function direction(event){
 
     switch (dir) {
         case "ArrowUp":
-            mHead = -20;
-            movement(snake);
-            break;
+            if (prevDir == "ArrowDown"){
+                gameover();
+            }
+            else{
+                prevDir = "ArrowUp";
+                mHead = -20;
+                movement(snake);
+                break;
+            }
         case "ArrowDown":
-            mHead = 20;
-            movement(snake);
-            break;
+            if (prevDir == "ArrowUp"){
+                gameover();
+            }
+            else{
+                prevDir = "ArrowDown";
+                mHead = 20;
+                movement(snake);
+                break;
+            }   
         case "ArrowLeft":
-            mHead = -1;
-            movement(snake);
-            break;
+            if (prevDir == "ArrowRight"){
+                gameover();
+            }
+            else{
+                prevDir = "ArrowLeft";
+                mHead = -1;
+                movement(snake);
+                break;
+            }   
         case "ArrowRight":
-            mHead = 1;
-            movement(snake);
-            break;
+            if (prevDir == "ArrowLeft"){
+                gameover();
+            }
+            else{
+                prevDir = "ArrowRight";
+                mHead = 1;
+                movement(snake);
+                break;
+            }   
         default:
             break;
     }
@@ -89,11 +116,26 @@ function eatFood(snake, food){
         if (snake[0] == food[f]){
             food.splice(f, 1);
             addFood(maxFood);
+            growSnake(snake);
 
             points += 10;
             document.getElementById("pInfo").innerText = "Points: " + points;
         }
     }
+}
+
+function growSnake(snake){
+    let gap = snake[snake.length - 1] - snake[snake.length - 2];
+    snake.push(snake[snake.length - 1] + gap);
+
+    if (snake.length > 10){
+        snakeColor = "orange";
+    }
+    else if (snake.length > 20){
+        snakeColor = "violet";
+    }
+
+    return;
 }
 
 function checkLimits(snake){
