@@ -30,6 +30,7 @@ function movement(snake) {
         snake[0] = snake [0] + mHead;
 
         checkLimits(snake);
+        autokill(snake);
         paintSnake(snake);
         eatFood(snake, food);
     }, speed);
@@ -146,13 +147,10 @@ function checkLimits(snake){
     }
 }
 
-function autokill(snake){
-    for (let k = 0; k < snake.length - 1; i++){
-        if (snake[0] == snake[k]){
+function autokill(snake, mHead){
+    for (let k = 0; k < snake.length - 1; k++){
+        if ((snake[0] + mHead) == snake[k]){
             gameover();
-        }
-        else{
-            return;
         }
     }
 }
