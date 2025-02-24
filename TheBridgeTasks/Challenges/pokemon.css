@@ -9,8 +9,6 @@ body{
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
-
-    padding: 2rem;
 }
 
 main {
@@ -21,7 +19,7 @@ main {
     justify-content: space-evenly;
     align-items: flex-start;
 
-    padding: 1rem;
+    padding: 0.6rem;
     gap: 1rem;
 }
 
@@ -34,11 +32,12 @@ main {
     align-items: flex-start;
 
     gap: 2rem;
-    padding: 0.4rem;
+    padding: 1rem;
 }
 
 h1{
     align-self: center;
+    text-align: center;
 }
 
 .inputPoke{
@@ -51,7 +50,6 @@ h1{
 
 .pokemonList{
     width: 100%;
-    margin-left: -5%;
 
     display: flex;
     flex-flow: column wrap;
@@ -59,14 +57,15 @@ h1{
     align-items: center;
 
     gap: 1rem;
+    padding: 0%;
 }
 
 .pokeItem{
-    width: 100%;
+    width: 80%;
     
     display: flex;
     flex-flow: column wrap;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: flex-start;
 
     padding: 1rem;
@@ -79,3 +78,13 @@ h1{
     background-color: beige;
 }
 
+@media only screen and (max-width: 700px) { 
+    .pList{
+        width: 100%;
+    }
+
+    .pokeItem{
+        width: 90%;
+    }
+
+}
