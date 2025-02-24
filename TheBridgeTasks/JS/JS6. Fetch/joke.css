@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    overflow: auto;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.jokeBox{
+    width: 30%;
+
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+
+    border: 2px solid black;
+    padding: 1rem;
+}
+
+p{
+    padding: 1rem;
+}
+
+.jokeBut{
+    padding: 0.4rem;
+    background-color: yellowgreen;
+    color: black;
+    font-weight: bold;
+}
+
+.jokeBut:hover{
+    background-color: black;
+    color: white;
+}
