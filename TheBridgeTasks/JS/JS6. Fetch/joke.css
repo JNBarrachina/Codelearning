@@ -28,13 +28,15 @@ body{
 
 p{
     padding: 1rem;
+    text-align: center;
 }
 
 .jokeBut{
     padding: 0.4rem;
     background-color: yellowgreen;
     color: black;
-    font-weight: bold;
+    font-weight: bolder;
+    font-size: 1rem;
 }
 
 .jokeBut:hover{
