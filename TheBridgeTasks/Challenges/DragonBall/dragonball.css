@@ -9,6 +9,8 @@ body{
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
+
+    background-color: black;
 }
 
 main {
@@ -40,20 +42,25 @@ h1{
 
     align-self: center;
     text-align: center;
+    color: orange;
+    font-weight: bold;
 }
 
 p{
     text-align: center;
+    font-weight: bold;
+    color: orange;
 }
 
 img{
     align-self: center;
     max-height: 200px;
+    margin: 30px;
 }
 
 img:hover{
     transition: 1s;
-    transform: scale(1.1);
+    transform: scale(1.2);
 }
 
 .dbCharacter{
@@ -69,6 +76,8 @@ img:hover{
     gap: 1rem;
     padding: 1rem;
 
-    border: 2px solid black;
+    border: 2px solid orange;
+    border-radius: 1rem;
+    background-color: rgb(54, 53, 53);
 }
 
