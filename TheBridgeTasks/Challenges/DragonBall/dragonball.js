@@ -47,7 +47,7 @@ function createCharac(idChar, nameChar, kiChar, raceChar, genChar, imgChar) {
     const charGen = document.createElement("p");
     charGen.innerText = genChar;
 
-    boxChar.append(charImg, charName, charKi, charRace, charGen);
+    boxChar.append(charName, charImg, charKi, charRace, charGen);
     charactersGrid.append(boxChar);
 }
 

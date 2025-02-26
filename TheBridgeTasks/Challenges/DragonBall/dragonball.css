@@ -89,6 +89,7 @@ p{
 }
 
 .characterName{
+    width: 60%;
     align-self: center;
 
     padding: 1rem;
