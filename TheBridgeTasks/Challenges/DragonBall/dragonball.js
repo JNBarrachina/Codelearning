@@ -3,7 +3,7 @@ fetch("https://dragonball-api.com/api/characters?&limit=1000")
     .then((response) => response.json())
     .then((data) => {
         data.items.forEach(character => {
-            const idChar = character.id;
+            const idChar = data.items.indexOf(character);
             const nameChar = character.name;
             const kiChar = character.ki;
             const raceChar = character.race;
@@ -14,6 +14,7 @@ fetch("https://dragonball-api.com/api/characters?&limit=1000")
         });
 
         allData = data.items;
+        console.log(data.items);
     })
     .catch((error) => {
         console.error("Error en la solicitud:", error);
@@ -30,7 +31,6 @@ let allData;
 function createCharac(idChar, nameChar, kiChar, raceChar, genChar, imgChar) {
     const boxChar = document.createElement("article");
     boxChar.setAttribute("class", "dbCharacter");
-    boxChar.setAttribute("id", `box${idChar}`);
 
     const charImg = document.createElement("img");
     charImg.src = imgChar;
@@ -59,7 +59,7 @@ function selectDescript(event){
 }
 
 function showDescript(allData, idDescript){
-    charDescript.innerText = allData[idDescript-1].description;
+    charDescript.innerText = allData[idDescript].description;
     charactersGrid.appendChild(charDescript);
     charDescript.style.visibility = "visible";
 }
