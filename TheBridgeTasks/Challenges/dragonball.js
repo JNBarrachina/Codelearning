@@ -7,7 +7,7 @@ fetch("https://dragonball-api.com/api/characters?&limit=1000")
             const raceChar = ch.race;
             const genChar = ch.gender;
             const imgChar = ch.image;
-            console.log(nameChar, kiChar, raceChar, genChar, imgChar);
+
             createCharac(nameChar, kiChar ,raceChar, genChar, imgChar);
         });
     })
