@@ -141,5 +141,16 @@ img:hover{
     bottom: 0px;
 }
 
+.pageBut{
+    padding: 0.4rem;
+    margin-bottom: 1rem;
+    background-color: orange;
+    font-weight: bolder;
+}
+
+.pageBut:hover{
+    background-color: white;
+    transform: scale(1.1);
+}
 
 
