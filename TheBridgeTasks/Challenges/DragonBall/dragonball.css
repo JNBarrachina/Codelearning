@@ -12,12 +12,18 @@ body{
     background-color: black;
 }
 
+main{
+    width: 100vw;
+}
+
 header{
     width: 100%;
 
     position: sticky;
     top: 0px;
     z-index: 1;
+    gap: 1rem;
+    padding: 1rem;
 
     display: flex;
     flex-flow: row wrap;
@@ -25,12 +31,10 @@ header{
     align-items: center;
 
     background-color: rgb(37, 37, 37);
-    padding: 1.2rem;
-    gap: 1rem;
 }
 
 #imgDB{
-    height: 30px;
+    height: 40px;
 }
 
 h1{
@@ -42,7 +46,7 @@ h1{
 }
 
 .inDB{
-    padding: 0.6rem;
+    padding: 0.4rem;
     background-color:  rgb(54, 53, 53);
     color: white;
     font-size: bolder;
@@ -98,7 +102,6 @@ p{
 }
 
 .characterName{
-    width: 60%;
     align-self: center;
 
     padding: 1rem;
@@ -118,13 +121,13 @@ p{
     transform: scale(1.14);
 }
 
-img{
+.imgCharacter{
     align-self: center;
-    max-height: 200px;
+    height: 250px;
     margin: 30px;
 }
 
-img:hover{
+.imgCharacter:hover{
     transition: 1s;
     transform: scale(1.3);
 }
@@ -141,6 +144,17 @@ img:hover{
     bottom: 0px;
 }
 
+.pageButtons{
+    width: 60%;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+
+    gap: 1rem;
+}
+
 .pageBut{
     padding: 0.4rem;
     margin-bottom: 1rem;
@@ -151,6 +165,11 @@ img:hover{
 .pageBut:hover{
     background-color: white;
     transform: scale(1.1);
+}
+
+.pageBut:disabled{
+    background-color: gray;
+    color: white;
 }
 
 

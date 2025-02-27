@@ -1,16 +1,22 @@
-let nPage;
-let pPage;
+let pages = {
+    current: "https://dragonball-api.com/api/characters?limit=10",
+    prev: "",
+    next: "",
+};
 
 function showCharacters(){
-    fetch("https://dragonball-api.com/api/characters?page=1&limit=10")
+    fetch(pages.current)
     .then((response) => response.json())
     .then((data) => {
-        nPage = data.links.next;
+        pages.prev = data.links.previous;
+        pages.next = data.links.next;
+
+        disablePageButtons();
+        window.scrollTo(0,0);
 
         charactersGrid.innerHTML = "";
         data.items.forEach(character => {
-            const idCharacter = data.items.indexOf(character);
-            createCharac(character, idCharacter);
+            createCharac(character);
         });
     })
 
@@ -21,48 +27,15 @@ function showCharacters(){
 
 showCharacters();
 
-const charactersGrid = document.getElementById("dbList")
-charactersGrid.addEventListener("mouseover", selectDescript);
-const charDescript = document.createElement("p");
-charDescript.setAttribute("class", "pDescription");
-
-const searchInput = document.getElementById("inputDB");
-searchInput.addEventListener("input", searchCharacters);
-
-const nextPage = document.getElementById("nextB")
-nextPage.addEventListener("click", changePage(nPage));
-const prevPage = document.getElementById("prevB")
-prevPage.addEventListener("click", changePage(pPage));
-
-function changePage(currentPage){
-    console.log(currentPage)
-    fetch(currentPage)
-    .then((response) => response.json())
-    .then((data) => {
-        charactersGrid.innerHTML = "";
-        nPage = data.links.next;
-        pPage = data.links.previous;
-
-        data.items.forEach(character => {
-            const idCharacter = data.items.indexOf(character);
-            createCharac(character, idCharacter);
-        });
-
-        document.documentElement.scrollTop = 0
-    })
-    .catch((error) => {
-        console.error("Error en la solicitud:", error);
-    });
-}
-
-function createCharac(character, idCharacter) {
+function createCharac(character) {
     const boxChar = document.createElement("article");
     boxChar.setAttribute("class", "dbCharacter");
 
     const charImg = document.createElement("img");
+    charImg.setAttribute("class", "imgCharacter");
     charImg.src = character.image;
     const charName = document.createElement("p");
-    charName.setAttribute("id", idCharacter);
+    charName.setAttribute("id", character.id);
     charName.setAttribute("class", "characterName");
     charName.innerText = character.name;
 
@@ -77,6 +50,51 @@ function createCharac(character, idCharacter) {
     charactersGrid.append(boxChar);
 }
 
+const charactersGrid = document.getElementById("dbList");
+
+const charactersNames = document.querySelectorAll("characterName");
+charactersNames.forEach((characterName) => {
+    characterName.addEventListener("mouseover", selectDescript);
+});
+const charDescript = document.createElement("p");
+charDescript.setAttribute("class", "pDescription");
+
+const searchInput = document.getElementById("inputDB");
+searchInput.addEventListener("input", searchCharacters);
+
+const nextPageButton = document.getElementById("nextB")
+nextPageButton.addEventListener("click", toNextPage);
+const prevPageButton = document.getElementById("prevB")
+prevPageButton.addEventListener("click", toPrevPage);
+
+
+function toNextPage(){
+    pages.current = pages.next;
+
+    showCharacters();
+}
+
+function toPrevPage(){
+    pages.current = pages.prev;
+
+    showCharacters();
+}
+
+function disablePageButtons(){
+    if (pages.prev == ""){
+        prevPageButton.setAttribute("disabled", true);
+    }
+    else{
+        prevPageButton.removeAttribute("disabled");
+    }
+
+    if (pages.next == ""){
+        nextPageButton.setAttribute("disabled", true)
+    }
+    else{
+        nextPageButton.removeAttribute("disabled");
+    }
+}
 
 function searchCharacters(){
     const s = document.getElementById("inputDB").value.toLowerCase();
@@ -97,24 +115,24 @@ function searchCharacters(){
 }
 
 function selectDescript(event){
+    alert("Salta alert");
+    console.log(event.target.id);
+    
     const idDescript = event.target.id;
     charDescript.style.visibility = "hidden";
     charDescript.innerText = "";
 
-    fetch("https://dragonball-api.com/api/characters?name=" + s)
+    fetch("https://dragonball-api.com/api/characters?id=" + idDescript)
         .then((response) => response.json())
         .then((data) => {
-            charactersGrid.innerHTML = "";
-            data.forEach(character => {
-                createCharac(character);
-        });
+            console.log(data);
         });
 
-    showDescript(allData, idDescript);
+    showDescript(idDescript);
 }
 
-function showDescript(allData, idDescript){
-    charDescript.innerText = allData[idDescript].description;
+function showDescript(idDescript){
+    // charDescript.innerText = allData[idDescript].description;
     charactersGrid.appendChild(charDescript);
     charDescript.style.visibility = "visible";
 }
