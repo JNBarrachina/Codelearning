@@ -1,51 +1,47 @@
-
-fetch("https://dragonball-api.com/api/characters?&limit=1000")
+function showAll(){
+    fetch("https://dragonball-api.com/api/characters?&limit=1000")
     .then((response) => response.json())
     .then((data) => {
+        charactersGrid.innerHTML = "";
         data.items.forEach(character => {
-            const idChar = data.items.indexOf(character);
-            const nameChar = character.name;
-            const kiChar = character.ki;
-            const raceChar = character.race;
-            const genChar = character.gender;
-            const imgChar = character.image;
-
-            createCharac(idChar, nameChar, kiChar ,raceChar, genChar, imgChar);
+            createCharac(character);
         });
 
         allData = data.items;
-        console.log(data.items);
     })
     .catch((error) => {
         console.error("Error en la solicitud:", error);
     });
+}
 
+showAll();
 
 const charactersGrid = document.getElementById("dbList")
 charactersGrid.addEventListener("mouseover", selectDescript);
 const charDescript = document.createElement("p");
 charDescript.setAttribute("class", "pDescription");
+const searchInput = document.getElementById("inputDB")
+searchInput.addEventListener("input", searchCharacter);
 let allData;
 
 
-function createCharac(idChar, nameChar, kiChar, raceChar, genChar, imgChar) {
+function createCharac(character) {
     const boxChar = document.createElement("article");
     boxChar.setAttribute("class", "dbCharacter");
 
     const charImg = document.createElement("img");
-    charImg.src = imgChar;
-
+    charImg.src = character.image;
     const charName = document.createElement("p");
-    charName.setAttribute("id", idChar);
+    charName.setAttribute("id", character.id);
     charName.setAttribute("class", "characterName");
-    charName.innerText = nameChar;
+    charName.innerText = character.name;
 
     const charKi = document.createElement("p");
-    charKi.innerText = kiChar;
+    charKi.innerText = character.ki;
     const charRace = document.createElement("p");
-    charRace.innerText = raceChar;
+    charRace.innerText = character.race;
     const charGen = document.createElement("p");
-    charGen.innerText = genChar;
+    charGen.innerText = character.gender;
 
     boxChar.append(charName, charImg, charKi, charRace, charGen);
     charactersGrid.append(boxChar);
@@ -64,3 +60,20 @@ function showDescript(allData, idDescript){
     charDescript.style.visibility = "visible";
 }
 
+function searchCharacter(){
+    const s = document.getElementById("inputDB").value.toLowerCase();
+
+    if (s == ""){
+        showAll();
+    }
+    else{
+        fetch("https://dragonball-api.com/api/characters?name=" + s)
+    .then((response) => response.json())
+    .then((data) => {
+        charactersGrid.innerHTML = "";
+        data.forEach(character => {
+            createCharac(character);
+        });
+    });
+    }
+}
