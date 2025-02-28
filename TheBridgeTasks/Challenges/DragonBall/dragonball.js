@@ -12,7 +12,7 @@ function showCharacters(){
         pages.next = data.links.next;
 
         disablePageButtons();
-        window.scrollTo(0,0);
+        window.scrollTo({top:0, behavior:"smooth"});
 
         charactersGrid.innerHTML = "";
         data.items.forEach(character => {
@@ -34,11 +34,15 @@ function createCharac(character) {
     const charImg = document.createElement("img");
     charImg.setAttribute("class", "imgCharacter");
     charImg.src = character.image;
+
     const charName = document.createElement("p");
     charName.setAttribute("id", character.id);
     charName.setAttribute("class", "characterName");
     charName.innerText = character.name;
+    charName.addEventListener("mouseover", showDescription);
+    charName.addEventListener("mouseout", hideDescription);
 
+    
     const charKi = document.createElement("p");
     charKi.innerText = character.ki;
     const charRace = document.createElement("p");
@@ -50,14 +54,8 @@ function createCharac(character) {
     charactersGrid.append(boxChar);
 }
 
-const charactersGrid = document.getElementById("dbList");
 
-const charactersNames = document.querySelectorAll("characterName");
-charactersNames.forEach((characterName) => {
-    characterName.addEventListener("mouseover", selectDescript);
-});
-const charDescript = document.createElement("p");
-charDescript.setAttribute("class", "pDescription");
+const charactersGrid = document.getElementById("dbList");
 
 const searchInput = document.getElementById("inputDB");
 searchInput.addEventListener("input", searchCharacters);
@@ -66,7 +64,6 @@ const nextPageButton = document.getElementById("nextB")
 nextPageButton.addEventListener("click", toNextPage);
 const prevPageButton = document.getElementById("prevB")
 prevPageButton.addEventListener("click", toPrevPage);
-
 
 function toNextPage(){
     pages.current = pages.next;
@@ -97,16 +94,18 @@ function disablePageButtons(){
 }
 
 function searchCharacters(){
-    const s = document.getElementById("inputDB").value.toLowerCase();
+    const searchString = document.getElementById("inputDB").value.toLowerCase();
 
-    if (s == ""){
+    if (searchString == ""){
         showCharacters();
     }
     else{
-        fetch("https://dragonball-api.com/api/characters?name=" + s)
+        fetch("https://dragonball-api.com/api/characters?name=" + searchString)
         .then((response) => response.json())
         .then((data) => {
             charactersGrid.innerHTML = "";
+            window.scrollTo(0,0);
+
             data.forEach(character => {
                 createCharac(character);
         });
@@ -114,25 +113,25 @@ function searchCharacters(){
     }
 }
 
-function selectDescript(event){
-    alert("Salta alert");
-    console.log(event.target.id);
-    
-    const idDescript = event.target.id;
-    charDescript.style.visibility = "hidden";
-    charDescript.innerText = "";
 
-    fetch("https://dragonball-api.com/api/characters?id=" + idDescript)
+let characterDescription = document.createElement("p");
+characterDescription.setAttribute("class", "pDescription");
+
+function showDescription(event){ 
+    const idDescription = event.target.id;
+    
+    characterDescription.innerText = "";
+
+    fetch("https://dragonball-api.com/api/characters/" + idDescription)
         .then((response) => response.json())
         .then((data) => {
-            console.log(data);
+            characterDescription.innerText = data.description;
         });
 
-    showDescript(idDescript);
+    charactersGrid.append(characterDescription);
+    characterDescription.style.visibility = "visible";
 }
-
-function showDescript(idDescript){
-    // charDescript.innerText = allData[idDescript].description;
-    charactersGrid.appendChild(charDescript);
-    charDescript.style.visibility = "visible";
+    
+function hideDescription(){
+    characterDescription.style.visibility = "hidden";
 }
