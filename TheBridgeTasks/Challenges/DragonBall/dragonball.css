@@ -5,45 +5,51 @@
 
 body{
     display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
 
     background-color: black;
+    padding: 1rem;
 }
 
 header{
-    width: 100%;
-
-    position: sticky;
-    top: 0px;
-    z-index: 1;
     gap: 1rem;
     padding: 1rem;
 
+    max-width: 20%;
+
     display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: center;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
 
-    background-color: rgb(37, 37, 37);
+    background-color: black;
+
+    position: sticky;
+    top: 0px;
 }
 
-#imgDB{
-    height: 40px;
+.linkBall{
+    align-self: center;
 }
 
-#imgDB:hover{
+.imgball{
+    height: 60px;
+}
+
+.imgball:hover{
     transform: scale(1.2);
-    transition: 1.5s;
+    transition: 1.4s;
 }
 
 h1{
-    align-self: center;
+    width: 100%;
     text-align: center;
+
     color: orange;
     font-weight: bold;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
 }
 
 .inDB{
@@ -53,49 +59,37 @@ h1{
     font-size: bolder;
 }
 
-main {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
-    align-items: flex-start;
-}
-
-.asideCategories{
+.navDB{
     display: flex;
     flex-flow: column wrap;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
 
-    background-color: black;
     gap: 1rem;
-    padding: 1rem;
-    flex-grow: 1;
-
-    position: sticky;
-    top: 60px;
-    z-index: 1;
 }
 
-.pFilter{
-    width: 100%;
-
-    background-color: orange;
-    color: black;
-
+.itemNav{
     padding: 0.4rem;
     font-weight: bolder;
 }
 
-.pFilter:hover{
+.itemNav:hover{
     background-color: white;
     color: black;
     transform: scale(1.1);
     transition: 0.4s;
 }
 
-.dbList{
-    width: 85%;
+main {
+    width: 80%;
 
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+.dbList{
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;
@@ -158,7 +152,6 @@ p{
 }
 
 .pDescription{
-    width: 100%;
     padding: 1rem;
 
     background-color: black;
@@ -171,7 +164,7 @@ p{
 }
 
 .pageButtons{
-    width: 60%;
+    width: 100%;
 
     display: flex;
     flex-flow: row wrap;
@@ -199,8 +192,18 @@ p{
     color: white;
 }
 
-@media only screen and (max-width: 780px) { 
-    .asideCategories{
+@media only screen and (max-width: 1150px) { 
+    body{
+        flex-flow: column wrap;
+    }
+
+    header{
+        width: 100%;
+
+        flex-flow: row wrap;
+    }
+    
+    .navDB{
         display: flex;
         flex-flow: row wrap;
         justify-content: space-evenly;
