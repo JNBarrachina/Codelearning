@@ -7,35 +7,34 @@ body{
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;
-    align-items: flex-start;
 
     background-color: black;
     padding: 1rem;
 }
 
 header{
-    gap: 1rem;
-    padding: 1rem;
-
-    max-width: 20%;
-
     display: flex;
     flex-flow: column wrap;
-    justify-content: flex-start;
-    align-items: flex-start;
+    flex-grow: 1;
 
     background-color: black;
 
+    gap: 1.6rem;
+    padding: 1rem;
+
     position: sticky;
     top: 0px;
+    z-index: 1;
 }
+
 
 .linkBall{
     align-self: center;
 }
 
 .imgball{
-    height: 60px;
+    height: 40px;
+    animation: fadeInDown 2s;
 }
 
 .imgball:hover{
@@ -44,7 +43,6 @@ header{
 }
 
 h1{
-    width: 100%;
     text-align: center;
 
     color: orange;
@@ -54,34 +52,92 @@ h1{
 
 .inDB{
     padding: 0.4rem;
+
+    border: 2px solid orange;
     background-color:  rgb(54, 53, 53);
     color: white;
     font-size: bolder;
+
+    animation: fadeInDown 2s;
 }
 
 .navDB{
+    width: 100%;
+
     display: flex;
     flex-flow: column wrap;
-    justify-content: flex-start;
+    align-items: center;
+}
+
+.ulDB{
+    list-style: none;
+
+    width: 100%;
+    
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
     align-items: flex-start;
 
-    gap: 1rem;
+    gap: 2rem;
+    padding: 0;
+
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+
+    animation: fadeInUp 1s;
 }
 
-.itemNav{
-    padding: 0.4rem;
-    font-weight: bolder;
+.itemNav {
+    position: relative;
+    padding: 0.6rem;
 }
 
-.itemNav:hover{
+.itemNav:hover .ulNav {
+    display: block;
+    color: white;
+
+    animation: flipInY 0.6s;;
+    border: 2px solid rgb(54, 53, 53);
+
+}
+
+.ulNav {    
+    position: absolute;
+    top: -2px;
+    left: 100%;
+
+    display: none;
+    list-style: none;
+    padding: 0;
+
+    background-color: black;
+
+    z-index: 1;
+}
+
+.subitemNav {
+    width: 150px;
+    padding: 0.6rem;
+
+    background-color: black;
+}
+
+.itemNav:hover,.subitemNav:hover {
+    background-color: orange;
+    color: black;
+    cursor: pointer;
+}
+
+.subitemNav:active {
     background-color: white;
     color: black;
-    transform: scale(1.1);
-    transition: 0.4s;
 }
 
 main {
     width: 80%;
+    flex-grow: 1;
 
     display: flex;
     flex-flow: row wrap;
@@ -113,8 +169,9 @@ main {
     padding: 2rem;
 
     border: 2px solid orange;
-    border-radius: 1rem;
     background-color: rgb(54, 53, 53);
+
+    animation: fadeInRight 1s;
 }
 
 p{
@@ -143,7 +200,6 @@ p{
 .imgCharacter{
     align-self: center;
     height: 250px;
-    margin: 30px;
 }
 
 .imgCharacter:hover{
@@ -167,9 +223,7 @@ p{
     width: 100%;
 
     display: flex;
-    flex-flow: row wrap;
     justify-content: center;
-    align-items: center;
 
     gap: 1rem;
     padding: 0.6rem;
@@ -192,27 +246,29 @@ p{
     color: white;
 }
 
-@media only screen and (max-width: 1150px) { 
-    body{
-        flex-flow: column wrap;
-    }
+@media only screen and (max-width: 1200px) { 
 
-    header{
-        width: 100%;
-
+    header{ 
         flex-flow: row wrap;
-    }
-    
-    .navDB{
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-evenly;
+        justify-content: center;
         align-items: center;
     
         padding: 1rem;
+    }
+
+    .ulDB{
+        flex-flow: row wrap;
+    }
+
+    .ulNav{
+        position: absolute;
+
+        top: 100%;
+        left: -1px;
+    }
     
-        position: sticky;
-        top: 70px;
+    .dbCharacter{
+        animation: fadeInUp 1s;
     }
 
     .pFilter{
@@ -223,6 +279,18 @@ p{
     
         padding: 0.4rem;
         font-weight: bolder;
+    }
+
+
+}
+
+@media only screen and (max-width: 400px) { 
+    header{
+        padding: 0.6rem;
+    }
+
+    .itemNav{
+        font-size: 0.8rem;
     }
 }
 
