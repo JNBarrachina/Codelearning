@@ -8,7 +8,7 @@ body{
     width: 100vw;
     height: 100vh;
 
-    background-color: black;
+    background-color: white;
 
     display: flex;
     flex-flow: row wrap;
@@ -25,17 +25,17 @@ body{
     align-items: center;
 
     text-align: center;
-    gap: 0.6rem;
+    gap: 1rem;
     padding: 1rem;
     border-radius: 1rem;
 
-    background-color: rgb(22, 22, 22);
+    background-color: rgb(243, 243, 243);
 }
 
 h2{
     width: 100%;
 
-    color: white;
+    color: black;
     font-weight: bolder;
 }
 
@@ -50,7 +50,7 @@ h2{
 }
 
 .welcomeUser{
-    color: greenyellow;
+    color: green;
     font-weight: bolder;
     font-size: 1.6rem;
 }
