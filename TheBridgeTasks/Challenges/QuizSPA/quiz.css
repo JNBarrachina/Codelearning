@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+main{
+    height: 100vh;
+
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+
+    background-color: black;
+
+    gap: 1rem;
+}
+
+h1{
+    color: white;
+}
+
+.sectionQuiz{
+    min-height: 20%;
+
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+
+    gap: 1rem;
+    padding: 1rem;
+
+    background-color: beige;
+    border-radius: 1rem;
+}
+
+.singleQuestion{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+
+    gap: 0.6rem;
+}
+
+.nextQ{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}

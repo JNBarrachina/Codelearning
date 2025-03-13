@@ -27,6 +27,7 @@ function createJoke(jokeId, jokeText){
     deleteJoke.innerText = "Remove"
     deleteJoke.setAttribute("class", "deleteJoke");
     deleteJoke.setAttribute("id", jokeId);
+    deleteJoke.addEventListener("click", () => removeJoke(jokeId));
 
     singleJokeBox.append(singleJoke, deleteJoke);
     putJoke.append(singleJokeBox);
@@ -45,14 +46,11 @@ function showJokes(){
 
 showJokes();
 
-const remove = document.getElementById("jokesBox")
-remove.addEventListener("click", removeJoke);
+
 const boxJokes = document.getElementById("jokesBox");
 
-function removeJoke(event){
-    let removedJokeID = event.target.id;
-
-    localStorage.removeItem(removedJokeID);
+function removeJoke(jokeId){
+    localStorage.removeItem(jokeId);
     boxJokes.innerHTML = "";
     showJokes();
 }
