@@ -1,4 +1,6 @@
 const API_URL = "https://opentdb.com/api.php?amount=10&type=multiple";
+
+const initQuiz = document.getElementById("selectQuiz");
 const quizButton = document.getElementById("buttonQuiz");
 quizButton.addEventListener("click", getQuiz);
 const nextQ = document.getElementById("buttonNext");
@@ -8,13 +10,14 @@ showResults.addEventListener("click", () => checkResults(quiz, finalAnswers));
 
 let quiz;
 function getQuiz(){
-
-
     fetch(API_URL)
     .then((response) => response.json())
     .then((data) => {        
         quiz = data.results;
-        console.log(quiz);
+
+        initQuiz.style.display = "none";
+        nextQ.style.display = "inline";
+
         showQuestion(quiz);
     })
 
@@ -28,6 +31,8 @@ const showQ = document.getElementById("boxQuestions");
 let numQuestion = 0;
 
 async function showQuestion(quiz){
+    nextQ.setAttribute("disabled", "true");
+
     const arrayAnswers = [];
     arrayAnswers.push(quiz[numQuestion].correct_answer);
     quiz[numQuestion].incorrect_answers.forEach(incorrectAns => {
@@ -76,6 +81,8 @@ function shuffleAnswers(arrayAnswers){
 
 let finalAnswers = [];
 function saveAnswer(event, idAnswer) {
+    nextQ.removeAttribute("disabled");
+
     const answerQuestion = event.target.id;
 
     if (numQuestion == quiz.length - 1){
@@ -89,21 +96,38 @@ function saveAnswer(event, idAnswer) {
     else{
         finalAnswers[idAnswer] = answerQuestion;
     }
-
-    console.log(finalAnswers);
 }
 
 
 function nextQuestion(){
-    numQuestion++;
-
-    console.log(numQuestion, quiz.length - 1);
-    
+    numQuestion++;    
     showQuestion (quiz);
 }
 
 function checkResults(quiz, finalAnswers){
-    console.log("QUIZ FINALIZADO");
+    let green = 0;
+    let red = 0;
+
+    finalAnswers.forEach(answer => {
+        console.log(answer, quiz[finalAnswers.indexOf(answer)].correct_answer)
+
+        if (answer == quiz[finalAnswers.indexOf(answer)].correct_answer){
+            green++
+        }
+        else{
+            red++
+        }
+    });
+
+    showQ.innerHTML = 
+    `<article class="singleQuestion" id="${numQuestion}">
+        <h2>Resultado final:</h2>
+        <section class="quizAnswersSection">
+            <p>Has acertado ${green} preguntas</p>
+            <p>Has fallado ${red} preguntas</p>
+        </section>
+    </article>
+    `;
 }
 
 

@@ -87,9 +87,11 @@ button:hover{
 }
 
 
-.btnResults{
+.btnQuiz{
     display: none;
+}
 
+.btnResults{
     background-color: brown;
     color: white;
 }
