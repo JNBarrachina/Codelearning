@@ -66,3 +66,30 @@ h1{
 
     gap: 0.6rem;
 }
+
+.sectionButtons{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+
+    padding: 1rem;
+}
+
+button{
+    padding: 0.4rem;
+    font-weight: bolder;
+}
+
+button:hover{
+    background-color: black;
+    color: white;
+}
+
+
+.btnResults{
+    display: none;
+
+    background-color: brown;
+    color: white;
+}
