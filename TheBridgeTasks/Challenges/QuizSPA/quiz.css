@@ -22,6 +22,7 @@ h1{
 
 .sectionQuiz{
     min-height: 20%;
+    max-width: 70%;
 
     display: flex;
     flex-flow: column wrap;
@@ -42,6 +43,7 @@ h1{
     align-items: center;
 
     gap: 0.6rem;
+    text-align: center;
 }
 
 .nextQ{
@@ -49,4 +51,18 @@ h1{
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
+}
+
+.selectAnswers{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.singleAnswer{
+    display: flex;
+    flex-flow: row nowrap;
+
+    gap: 0.6rem;
 }
