@@ -27,6 +27,7 @@ function getQuiz(){
 }
 
 const showQ = document.getElementById("boxQuestions");
+const showR = document.getElementById("boxResult");
 
 let numQuestion = 0;
 
@@ -119,15 +120,42 @@ function checkResults(quiz, finalAnswers){
         }
     });
 
-    showQ.innerHTML = 
-    `<article class="singleQuestion" id="${numQuestion}">
-        <h2>Resultado final:</h2>
-        <section class="quizAnswersSection">
-            <p>Has acertado ${green} preguntas</p>
-            <p>Has fallado ${red} preguntas</p>
-        </section>
-    </article>
-    `;
+    showQ.style.display = "none";
+    buildChart(green, red);
 }
 
+function buildChart(hits, misses){
+    console.log("Construyendo gráfica...")
+    showR.innerHTML = " <canvas id='miGrafico'></canvas>";
+    const ctx = document.getElementById('miGrafico').getContext('2d');
 
+    const datos = {
+        labels: ['Aciertos', 'Fallos',],
+        datasets: [{
+            label: 'Resultados',
+            data: [hits, misses],
+            backgroundColor: ['green', 'red'],
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        },
+        ]
+    };
+    
+    const miGrafico = new Chart(ctx, {
+        type: 'pie', // Tipo de gráfico: 'bar', 'line', 'pie', etc.
+        data: datos,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            animation: {
+                duration: 1000, // Duración en milisegundos
+                easing: 'easeOutBounce' // Tipo de animación
+            }
+        }
+    });
+
+    showR.style.display = "block";
+}

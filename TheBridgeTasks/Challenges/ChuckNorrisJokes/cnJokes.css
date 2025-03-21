@@ -107,3 +107,15 @@ h1{
     background-color: greenyellow;
 
 }
+
+#miGrafico {
+    width: 100%;
+
+    padding: 1rem;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    background-color: white;
+}

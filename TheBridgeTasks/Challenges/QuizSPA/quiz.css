@@ -95,3 +95,14 @@ button:hover{
     background-color: brown;
     color: white;
 }
+
+.boxResult{
+    display: none;
+}
+
+#miGrafico {
+    width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

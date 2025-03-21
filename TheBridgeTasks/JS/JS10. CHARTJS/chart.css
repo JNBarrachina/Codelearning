@@ -1,0 +1,14 @@
+body{
+    width: 100vw;
+}
+
+h1{
+    text-align: center;
+}
+
+#miGrafico {
+    width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
