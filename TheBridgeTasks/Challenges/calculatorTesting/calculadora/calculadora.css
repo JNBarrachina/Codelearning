@@ -1,0 +1,137 @@
+* {box-sizing: border-box; margin: 0; overflow: auto;}
+
+body {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculadora {
+    max-width: 500px;
+    height: 80%;
+
+    border: orange 10px solid;
+    border-radius: 1rem;
+    background-color: beige;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.resultados {
+    width: 90%;
+    height: 18%;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    align-items: center;
+
+    background-color: lightgrey;
+    border: orange 2px solid;
+    border-radius: 20px;
+    padding: 6px;
+}
+
+.pantalla {
+    width: 100%;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.psuperior {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: blueviolet;
+}
+
+.pinferior {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.numeros {
+    width: 60%;
+    height: 60%;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+}
+
+.operaciones {
+    width: 30%;
+    height: 60%;
+
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+}
+
+.cigual {
+    width: 90%;
+    height: 15%;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.boton {
+    border: 2px black solid;
+    border-radius: 10px;
+
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.boton:hover {
+    background-color: gray;
+    color: black;
+}
+
+.boton:active {
+    background-color: black;
+    color: white;
+}
+
+.numero {
+    width: 30%;
+    height: 20%;
+
+    background-color: black;
+    color: white;
+}
+
+.borrar { 
+    background-color: lightcoral;
+    color: white;
+}
+
+.botonaco {
+    width: 40%;
+    height: 80%;
+
+    background-color: orangered;
+    color: white;
+}
+
+.operador {
+    width: 90%;
+    height: 20%;
+
+    background-color: white;
+}
+

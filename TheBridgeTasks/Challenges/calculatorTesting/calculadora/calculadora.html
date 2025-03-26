@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="calculadora.css">
+</head>
+
+<body>
+    <div class="calculadora">
+        <div class="caja resultados" id="pantalla">
+            <div class="pantalla psuperior" id="psuperior"></div>
+            <div class="pantalla pinferior" id="pinferior"></div>
+        </div>
+        <div class="caja numeros">
+            <button class="boton numero numero7" id="numero7" onclick="calculadora(7)"> 7 </button>
+            <button class="boton numero numero8" id="numero8" onclick="calculadora(8)"> 8 </button>
+            <button class="boton numero numero9" id="numero9" onclick="calculadora(9)"> 9 </button>
+            <button class="boton numero numero4" oid="numero4" onclick="calculadora(4)"> 4 </button>
+            <button class="boton numero numero5" id="numero5" onclick="calculadora(5)"> 5 </button>
+            <button class="boton numero numero6" id="numero6" onclick="calculadora(6)"> 6 </button>
+            <button class="boton numero numero1" id="numero1" onclick="calculadora(1)"> 1 </button>
+            <button class="boton numero numero2" id="numero2" onclick="calculadora(2)"> 2 </button>
+            <button class="boton numero numero3" id="numero3" onclick="calculadora(3)"> 3 </button>
+            <button class="boton numero numero0" id="numero0" onclick="calculadora(0)"> 0 </button>
+            <button class="boton numero coma" id="coma" onclick="calculadora('.')"> . </button>
+            <button class="boton numero borrar" id="borrar" onclick="borrar()"> DEL </button>
+        </div>
+        <div class="caja operaciones">
+            <button class="boton operador sumar" id="sumar" onclick="suma()"> + </button>
+            <button class="boton operador restar" id="restar" onclick="resta()"> - </button>
+            <button class="boton operador multiplicar" id="multiplicar" onclick="multi()"> X </button>
+            <button class="boton operador dividir" id="dividir" onclick="divi()"> / </button>
+        </div>
+        <div class="caja cigual">
+            <button class="boton botonaco ce" id="reset" onclick="reset()"> C </button>
+            <button class="boton botonaco igual" id="igual" onclick="calcular()"> = </button>
+        </div>
+    </div>
+    <script src="calculadora.js"></script>
+</body>
+
+</html>
