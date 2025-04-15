@@ -17,8 +17,7 @@ app.get("/animals", (req, res) => {
 });
 
 app.post("/animals", (req, res) => {
-    animals.push(req.body)
-    res.send("Animal añadido");
+    animals.push(req.body);
 });
 
 app.listen(port, () => {
