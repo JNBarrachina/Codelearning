@@ -2,18 +2,49 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
-function transformName(name){
-    const newName = name.toUpperCase();
-    return newName;
-}
+const cors = require("cors");
+app.use(cors());
 
-app.get("/characters/:name", (req, res) => {
-    res.send(`Hola, ${req.params.name}. Tu nombre tiene ${req.params.name.length}. Tu nombre en mayúscula: ${transformName(req.params.name)}. Y esto?: ${req.query.name}`);
+const userNames = ["Juan", "Joan", "Vicente", "David", "Jesús", "José", "Paco"];
+const userData = [
+    {name: "ye", email: "ye@ye.es"},
+    {name: "ya", email: "ya@ya.com"}
+]
+
+app.get("/:newUser", (req, res) => {
+    const newUser = (req.params.newUser).split("+");
+
+    console.log(newUser);
+
+    const newUserName = newUser[0]
+    const newUserEmail = newUser[1]
+    const newUserObject = {
+        name: newUserName,
+        email: newUserEmail
+    }
+
+    userNames.push(newUserName);
+    userData.push(newUserObject);
+    console.log(userNames);
+    console.log(userData);
+
+    const userMessage = `Nuevo usuario añadido: ${newUserName}; Email: ${newUserEmail}`;
+
+    res.send(userMessage);
 });
 
 app.get("/names", (req, res) => {
-    res.send(`Y esto?: ${req.query.name}`);
+    console.log("FETCH ACTIVADO")
+
+    res.send(userNames);
 });
+
+app.get("/users", (req, res) => {
+    console.log("FETCH ACTIVADO")
+
+    res.send(userData);
+});
+
 
 app.listen(port, () => {
     console.log(`Escuchando...`);
