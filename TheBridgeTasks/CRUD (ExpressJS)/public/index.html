@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APIZOO</title>
+    <link rel="stylesheet" href="animals.css">
+</head>
+
+<body>
+    <main id="mainpage">
+        <article class="animalsBox">
+            <h1>APIZOO</h1>
+            <form id="addAnimal" class="animalsForm">
+                <input type="text" placeholder="Nombre del animal" id="inputName">
+                <input type="number" placeholder="Fuerza del animal" id="inputStrength">
+                <button id="btnAddAnimal" itemid="addBtn">Añadir animal</button>
+            </form>
+            <p id="infoMessage" class="infoMessage"></p>
+            <button id="showAnimals" class="showBtn">Mostrar animales</button>
+            <section id="animalsList" class="animalsList">
+            </section>
+        </article>
+    </main>
+    <script src="animals.js"></script>
+</body>
+
+</html>
