@@ -4,19 +4,36 @@
 }
 
 body{
+    display: flex;
+    flex-flow: column nowrap;
+
     background-color: black;
+}
+
+header{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0.2rem;
+    gap: 1rem;
+
+    background-color: rgb(130, 103, 33);
+
+    position: sticky;
+    top: 0;
 }
 
 main{
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
     justify-content: center;
     align-items: center;
 }
 
 .animalsBox{
-    width: 50%;
-    max-width: 1000px;
+    width: fit-content;
 
     display: flex;
     flex-flow: column wrap;
@@ -28,7 +45,12 @@ main{
 }
 
 h1{
-    color: orange;
+    color: white;
+}
+
+.animalimg{
+    height: 60px;
+    margin-bottom: 10px;
 }
 
 .animalsForm{
@@ -58,7 +80,8 @@ button{
 }
 
 button:hover{
-    background-color: greenyellow;
+    background-color: rgb(130, 103, 33);
+    color: white;
     transition: 0.6s;
 }
 
@@ -71,20 +94,30 @@ button:hover{
     gap: 0.4rem;
 
     visibility: collapse;
+    align-self: center;
 
     background-color: rgb(54, 54, 54);
 }
 
-.animalItem{
+.singleAnimalBox{
     width: 100%;
+    gap: 0.6rem;
 
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+.animalNameBox{
+    min-width: fit-content;
+    
     background-color: black;
+    color: white;
 
-    color: greenyellow;
     font-weight: bolder;
 }
 
-.animalItem:hover{
+.animalNameBox:hover{
     cursor: pointer;
 
     background-color: red;
@@ -97,7 +130,7 @@ button:hover{
     font-size: 1rem;
 }
 
-.removeBox{
+.removeBox, .updateBox{
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
@@ -113,7 +146,7 @@ button:hover{
     border-radius: 0.6rem;
 }
 
-.removeBtnsBox{
+.removeBtnsBox, .updateBtnsBox{
     display: flex;
 
     gap: 0.4rem;

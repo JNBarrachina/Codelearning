@@ -4,21 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APIZOO</title>
+    <title>ZOOTOAPIA</title>
     <link rel="stylesheet" href="animals.css">
 </head>
 
 <body>
+    <header>
+        <h1>ZOOTOAPIA</h1>
+        <section class="animalsImgs">
+            <img src="imgs/dog.webp" alt="" class="animalimg">
+        </section>
+    </header>
     <main id="mainpage">
         <article class="animalsBox">
-            <h1>APIZOO</h1>
             <form id="addAnimal" class="animalsForm">
                 <input type="text" placeholder="Nombre del animal" id="inputName">
                 <input type="number" placeholder="Fuerza del animal" id="inputStrength">
                 <button id="btnAddAnimal" itemid="addBtn">Añadir animal</button>
+                <p id="infoMessage" class="infoMessage"></p>
             </form>
-            <p id="infoMessage" class="infoMessage"></p>
-            <button id="showAnimals" class="showBtn">Mostrar animales</button>
             <section id="animalsList" class="animalsList">
             </section>
         </article>

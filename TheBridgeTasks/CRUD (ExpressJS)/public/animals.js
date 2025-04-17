@@ -1,10 +1,9 @@
+
 const BASE_URL = "http://localhost:5376";
 
 const mainPage = document.getElementById("mainpage");
 const postAnimal = document.getElementById("btnAddAnimal");
 postAnimal.addEventListener("click", checkData);
-const btnAnimals = document.getElementById("showAnimals");
-btnAnimals.addEventListener("click", getAllAnimals);
 const animalsSection = document.getElementById("animalsList");
 const message = document.getElementById("infoMessage");
 
@@ -34,19 +33,17 @@ function checkData(event){
 
 function addAnimal(newAnimal){
     fetch(`${BASE_URL}/animals`, {
-        method: "POST", // or 'PUT'
-        body: JSON.stringify(newAnimal), // data can be `string` or {object}!
+        method: "POST",
+        body: JSON.stringify(newAnimal),
         headers: {
         "Content-Type": "application/json",
         },
     })
 
-    
     .then((res) => res.json())
-    
-    .catch((error) => console.error("Error:", error))
-    
+        
     .then((response) => console.log("Success:", response));
+    
 
     message.innerText = "Animal anadido correctamente";
     getAllAnimals();
@@ -59,14 +56,25 @@ function getAllAnimals(){
         animalsSection.innerHTML = "";
     
         data.forEach(animal => {
+            const singleAnimalBox = document.createElement("article");
+            singleAnimalBox.setAttribute("class", "singleAnimalBox")
+
+            const animalName = animal.name.charAt(0).toUpperCase() + animal.name.slice(1);
+
             const singleAnimal = document.createElement("button");
-            singleAnimal.setAttribute("class", "animalItem");
+            singleAnimal.setAttribute("class", "animalNameBox");
             singleAnimal.setAttribute("id", `${animal.id}`);
             singleAnimal.addEventListener("click", ()  => confirmRemove(animal));
             singleAnimal.addEventListener("mouseover", () => changeBtnText(singleAnimal.id));
-            singleAnimal.innerText = `${animal.name}: ${animal.strength} de fuerza`;
+            singleAnimal.innerText = `${animalName}: ${animal.strength} de fuerza`;
 
-            animalsSection.append(singleAnimal);
+            const modAnimal = document.createElement("button");
+            modAnimal.setAttribute("class", "modAnimalBtn");
+            modAnimal.innerText = "Modificar";
+            modAnimal.addEventListener("click", () => modifyWindow(animal));
+
+            singleAnimalBox.append(singleAnimal, modAnimal)
+            animalsSection.append(singleAnimalBox);
         });
 
         animalsSection.style.visibility = "visible";
@@ -88,26 +96,24 @@ const confirmRemove = (animal) => {
     const removeBtns = document.createElement("div");
     removeBtns.setAttribute("class", "removeBtnsBox");
     const removeYes = document.createElement("button");
-    removeYes.addEventListener("click", () => removeAnimal(animal.id))
+    removeYes.addEventListener("click", () => removeAnimal(animal.id, removeBox.id))
     removeYes.innerText = "SÍ";
     const removeNo = document.createElement("button");
-    removeNo.addEventListener("click", () => closeRemoveWindow());
+    removeNo.addEventListener("click", () => closeWindow(removeBox.id));
     removeNo.innerText = "NO";
     removeBtns.append(removeYes, removeNo);
     
-
     removeBox.append(removeMessage, removeBtns);
     mainPage.append(removeBox);
 }
 
-const removeAnimal = (removedAnimal) => {
+const removeAnimal = (removedAnimal, removeBox) => {
     fetch(`${BASE_URL}/animals/${removedAnimal}`, {
         method: "DELETE", // or 'PUT'
         headers: {
         "Content-Type": "application/json",
         },
     })
-
     
     .then((res) => res.json())
     
@@ -115,7 +121,71 @@ const removeAnimal = (removedAnimal) => {
     
     .then((response) => console.log("Success:", response));
 
-    closeRemoveWindow();
+    closeWindow(removeBox);
+    getAllAnimals();
+}
+
+const modifyWindow = (animalToUpdate) => {
+    console.log("Modificar animal", animalToUpdate);
+
+    const updateBox = document.createElement("div");
+    updateBox.setAttribute("class", "updateBox");
+    updateBox.setAttribute("id", "updateWindow");
+
+    const updateForm = document.createElement("form");
+    updateForm.innerHTML = `<form id="modifyAnimal" class="updateForm">
+        <input type="text" placeholder="Nombre: ${animalToUpdate.name}" id="modifyInputName">
+        <input type="number" placeholder="Fuerza: ${animalToUpdate.strength}" id="modifyInputStrength">
+    </form>`
+
+    const updateBtns = document.createElement("div");
+    updateBtns.setAttribute("class", "updateBtnsBox");
+    const updateYes = document.createElement("button");
+    updateYes.addEventListener("click", () => updateAnimal(animalToUpdate.id, updateBox.id))
+    updateYes.innerText = "Actualizar";
+    const updateNo = document.createElement("button");
+    updateNo.addEventListener("click", () => closeWindow(updateBox.id));
+    updateNo.innerText = "Cancelar";
+    updateBtns.append(updateYes, updateNo);
+    
+    updateBox.append(updateForm, updateBtns);
+    mainPage.append(updateBox);
+}
+
+const updateAnimal = (animalToUpdateId, updateBox) => {
+    const newName = document.getElementById("modifyInputName");
+    const newStrength = document.getElementById("modifyInputStrength");
+
+    if (newName.value == "" || newStrength.value == ""){
+        alert("No has completado todos los campos");
+        return;
+    }
+    else if (newStrength.value < 1 || newStrength.value > 10){
+        alert("La fuerza debe ser un número entre 1 y 10");
+        return;
+    }
+    
+    const modifiedAnimal = {
+        id: animalToUpdateId,
+        name: newName.value,
+        strength: newStrength.value
+    }
+    
+    fetch(`${BASE_URL}/animals/${animalToUpdateId}`, {
+        method: "PUT",
+        body: JSON.stringify(modifiedAnimal),
+        headers: {
+        "Content-Type": "application/json",
+        },
+    })
+    
+    .then((res) => res.json())
+    
+    .catch((error) => console.error("Error:", error))
+    
+    .then((response) => console.log("Success:", response));
+
+    closeWindow(updateBox)
     getAllAnimals();
 }
 
@@ -135,7 +205,9 @@ const resetBtnText = (btnChangeText, originalText) => {
     btnChangeText.innerText = `${originalText}`;
 }
 
-const closeRemoveWindow = () => {
-    const removedWindow = document.getElementById("removeWindow");
+const closeWindow = (windowId) => {
+    const removedWindow = document.getElementById(windowId);
     removedWindow.remove();
 }
+
+getAllAnimals();
