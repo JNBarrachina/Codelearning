@@ -1,4 +1,5 @@
 const http = require("http");
+const os = require("node:os");
 
 http.createServer((req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -16,3 +17,6 @@ http.createServer((req, res) => {
     return res.end();
 
 }).listen(7777);
+
+console.log("Nombre del sistema operativo", os.platform())
+console.log(os.cpus());
