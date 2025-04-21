@@ -68,12 +68,20 @@ function getAllAnimals(){
             singleAnimal.addEventListener("mouseover", () => changeBtnText(singleAnimal.id));
             singleAnimal.innerText = `${animalName}: ${animal.strength} de fuerza`;
 
+            const animalBtns = document.createElement("section");
+
+            const animalImg = document.createElement("button");
+            animalImg.innerText = "Ver";
+            animalImg.addEventListener("click", () => imgWindow(animal.img))
+
             const modAnimal = document.createElement("button");
             modAnimal.setAttribute("class", "modAnimalBtn");
             modAnimal.innerText = "Modificar";
             modAnimal.addEventListener("click", () => modifyWindow(animal));
 
-            singleAnimalBox.append(singleAnimal, modAnimal)
+            animalBtns.append(animalImg, modAnimal);
+
+            singleAnimalBox.append(singleAnimal, animalBtns);
             animalsSection.append(singleAnimalBox);
         });
 
@@ -150,6 +158,23 @@ const modifyWindow = (animalToUpdate) => {
     
     updateBox.append(updateForm, updateBtns);
     mainPage.append(updateBox);
+}
+
+const imgWindow = (animalImageUrl) => {
+    const imgBox = document.createElement("div");
+    imgBox.setAttribute("class", "imgBox");
+    imgBox.setAttribute("id", "imgWindow");
+
+    const imgItem = document.createElement("img");
+    imgItem.setAttribute("class", "animalImg");
+    imgItem.src = animalImageUrl;
+
+    const closeImg = document.createElement("button");
+    closeImg.addEventListener("click", () => closeWindow(imgBox.id));
+    closeImg.innerText = "Cerrar";
+    
+    imgBox.append(imgItem, closeImg);
+    mainPage.append(imgBox);
 }
 
 const updateAnimal = (animalToUpdateId, updateBox) => {

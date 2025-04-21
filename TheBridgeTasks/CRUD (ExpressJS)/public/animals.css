@@ -130,7 +130,11 @@ button:hover{
     font-size: 1rem;
 }
 
-.removeBox, .updateBox{
+.animalImg{
+    height: 400px;
+}
+
+.removeBox, .updateBox, .imgBox{
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
@@ -138,7 +142,7 @@ button:hover{
 
     position: absolute;
     gap: 1rem;
-    padding: 2rem;
+    padding: 1.4rem;
 
     background-color: rgb(44, 44, 44);
     color: white;
@@ -146,7 +150,7 @@ button:hover{
     border-radius: 0.6rem;
 }
 
-.removeBtnsBox, .updateBtnsBox{
+.removeBtnsBox, .updateBtnsBox, .imgBox{
     display: flex;
 
     gap: 0.4rem;
