@@ -32,17 +32,21 @@ app.post("/animals", (req, res) => {
         return;
     }
     else{
-        let randomAnimalImg;
-        takeRandomImg(randomAnimalImg);;
-        console.log(randomAnimalImg)
-        
-        const newAnimal = {id: currentID, name: req.body.name.toLowerCase(), strength: req.body.strength, img: randomAnimalImg};
-        currentID++;
-    
-        animals.push(newAnimal);
+        fetch("https://random.dog/woof.json?ref=public_apis&utm_medium=website")
+        .then((response) => response.json())
+        .then((data) => {
+            const randomAnimalImg = data.url;
 
+            const newAnimal = {id: currentID, name: req.body.name.toLowerCase(), strength: req.body.strength, img: randomAnimalImg};
+
+            currentID++;
+            animals.push(newAnimal);
+        }) 
+
+        .catch((error) => {
+            console.error("Error en la solicitud:", error);
+        });
     }
-
 });
 
 app.delete("/animals/:id", (req, res) => {
@@ -79,15 +83,3 @@ app.listen(port, () => {
     console.log(`Escuchando...`);
 });
 
-function takeRandomImg(randomAnimalImg){
-    return fetch("https://random.dog/woof.json?ref=public_apis&utm_medium=website")
-    .then((response) => response.json())
-    .then((data) => {
-        randomAnimalImg = data.url;
-        return randomAnimalImg;
-    }) 
-
-    .catch((error) => {
-        console.error("Error en la solicitud:", error);
-    });
-}
