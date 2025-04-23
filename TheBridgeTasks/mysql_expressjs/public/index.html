@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APIPOLIS</title>
+    <link rel="stylesheet" href="cities.css">
+</head>
+
+<body>
+    <header>
+        <h1>APIPOLIS</h1>
+        <section class="animalsImgs">
+            <img src="imgs/cityicon.svg" alt="" class="cityimg">
+        </section>
+    </header>
+    <main id="mainpage">
+        <article class="animalsBox">
+            <form id="addAnimal" class="animalsForm">
+                <input type="text" placeholder="Nombre de la ciudad" id="inputName">
+                <input type="text" placeholder="País" id="inputStrength">
+                <button id="btnAddAnimal" itemid="addBtn">Añadir ciudad</button>
+                <p id="infoMessage" class="infoMessage"></p>
+            </form>
+        </article>
+        <section id="animalsList" class="animalsList">
+        </section>
+    </main>
+    <script src="cities.js"></script>
+</body>
+
+</html>
