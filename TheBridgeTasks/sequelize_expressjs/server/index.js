@@ -1,61 +1,25 @@
-const express = require("express");
-const app = express();
 const port = 3000;
 
+const express = require("express");
 const cors = require("cors");
-app.use(cors());
-app.use(express.json());
 
-const { Sequelize, DataTypes } = require('sequelize');
-const mysql = require("mysql2");
+const booksRouter = require("./routes/books.routes");
+const Book = require("./models/Book");
 
-const sequelize = new Sequelize('testnodejs', 'root', 'root', {
-    host: 'localhost',
-    dialect: 'mysql'
-});
+const main = () => {
+  const app = express();
+  app.use(cors());
+  app.use(express.json());
 
-async function dbconnect(){
-    try {
-        await sequelize.authenticate();
-        console.log('Connection has been established successfully.');
-    } catch (error) {
-        console.error('Unable to connect to the database:', error);
-    }
+  Book.sync();
+
+  app.use("/books", booksRouter);
+
+  app.listen(port, () => {
+    console.log(`Escuchando...`);
+  });
 }
 
-dbconnect();
-
-const User = sequelize.define(
-    'Users',
-    {
-      // Model attributes are defined here
-      firstName: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      lastName: {
-        type: DataTypes.STRING,
-        // allowNull defaults to true
-      },
-    },
-    {
-      // Other model options go here
-    },
-);
-
-User.sync();
-
-  // `sequelize.define` also returns the model
-console.log(User === sequelize.models.User); // true
-
-
-app.get("/", (req, res) => {
-    res.sendStatus(200);
-});
-
-app.listen(port, () => {
-    console.log(`Escuchando...`);
-});
-
+main();
 
 
