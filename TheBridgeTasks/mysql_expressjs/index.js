@@ -5,6 +5,7 @@ const port = 3000;
 const cors = require("cors");
 app.use(cors());
 app.use(express.json());
+
 app.use(express.static('public'));
 
 const mysql = require("mysql2");
@@ -52,12 +53,12 @@ app.post("/cities", (req, res) => {
 app.put("/cities/:id", (req, res) => {
     const idToPut = parseInt(req.params.id);
     const newCityData = req.body;
-    
-    let sqlPut = `UPDATE cities SET name = "${newCityData.name}", country = "${newCityData.country}" WHERE id = ${idToPut}`;
+        
+    let sqlPut = `UPDATE cities SET city = "${newCityData.city}", country = "${newCityData.country}" WHERE id = ${idToPut}`;
 
     connectdb.query(sqlPut, (err, result) => {
         if (err) throw err;
-        res.send("Ciudad modificada");
+        res.sendStatus(200);
     });
 });
 
@@ -85,4 +86,6 @@ app.delete("/cities/:id", (req, res) => {
 app.listen(port, () => {
     console.log(`Escuchando...`);
 });
+
+
 

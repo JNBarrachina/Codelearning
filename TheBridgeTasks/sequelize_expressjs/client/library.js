@@ -8,8 +8,8 @@ const animalsSection = document.getElementById("animalsList");
 const message = document.getElementById("infoMessage");
 
 const animalName = document.getElementById("inputName");
-const animalStrength = document.getElementById("inputStrength");
-
+const animalStrength = document.getElementById("inputDescription");
+const bookPages = document.getElementById("inputPages");
 
 function checkData(event){
     event.preventDefault();
@@ -36,45 +36,45 @@ async function addCity(newCity){
         },
     })
 
-    message.innerText = "Ciudad anadida correctamente";
-    getAllCities();
+    message.innerText = "Libro anadida correctamente";
+    getAllBooks();
 }
 
-function getAllCities(){
-    fetch(`${BASE_URL}/cities`)
+function getAllBooks(){
+    fetch(`${BASE_URL}/books`)
     .then((response) => response.json())
     .then((data) => {
         animalsSection.innerHTML = "";
     
-        data.forEach(city => {
-            const singleCityBox = document.createElement("article");
-            singleCityBox.setAttribute("class", "singleAnimalBox")
+        data.forEach(book => {
+            const singleBookBox = document.createElement("article");
+            singleBookBox.setAttribute("class", "singleAnimalBox")
 
-            const cityName = city.city.charAt(0).toUpperCase() + city.city.slice(1);
+            const bookName = book.title.charAt(0).toUpperCase() + book.title.slice(1);
 
-            const singleCity = document.createElement("button");
-            singleCity.setAttribute("class", "animalNameBox");
-            singleCity.setAttribute("id", `${city.id}`);
-            singleCity.addEventListener("click", ()  => confirmRemove(city));
-            singleCity.addEventListener("mouseover", () => changeBtnText(singleCity.id));
-            singleCity.innerText = `${cityName}, ${city.country}`;
+            const singleBook = document.createElement("button");
+            singleBook.setAttribute("class", "animalNameBox");
+            singleBook.setAttribute("id", `${book.id}`);
+            singleBook.addEventListener("click", ()  => confirmRemove(book));
+            singleBook.addEventListener("mouseover", () => changeBtnText(singleBook.id));
+            singleBook.innerText = `${bookName} (${book.length} páginas)`;
 
-            const cityBtns = document.createElement("section");
-            cityBtns.setAttribute("class", "cityBtnsBox");
+            const bookBtns = document.createElement("section");
+            bookBtns.setAttribute("class", "cityBtnsBox");
 
-            const cityImg = document.createElement("button");
-            cityImg.innerText = "Ver";
+            const bookImg = document.createElement("button");
+            bookImg.innerText = "Ver más";
             // cityImg.addEventListener("click", () => imgWindow(animal.img))
 
-            const modCity = document.createElement("button");
-            modCity.setAttribute("class", "modAnimalBtn");
-            modCity.innerText = "Modificar";
-            modCity.addEventListener("click", () => modifyWindow(city));
+            const modBook = document.createElement("button");
+            modBook.setAttribute("class", "modAnimalBtn");
+            modBook.innerText = "Modificar";
+            modBook.addEventListener("click", () => modifyWindow(book));
 
-            cityBtns.append(cityImg, modCity);
+            bookBtns.append(bookImg, modBook);
 
-            singleCityBox.append(singleCity, cityBtns);
-            animalsSection.append(singleCityBox);
+            singleBookBox.append(singleBook, bookBtns);
+            animalsSection.append(singleBookBox);
         });
 
         animalsSection.style.visibility = "visible";
@@ -122,7 +122,7 @@ const removeCity = (removedCity, removeBox) => {
     .then((response) => console.log("Success:", response));
 
     closeWindow(removeBox);
-    getAllCities();
+    getAllBooks();
 }
 
 const modifyWindow = (cityToUpdate) => {
@@ -198,7 +198,7 @@ const updateCity = (cityToUpdateId, updateBox) => {
     .then((response) => console.log("Success:", response));
 
     closeWindow(updateBox)
-    getAllCities();
+    getAllBooks();
 }
 
 const changeBtnText = (id) => {
@@ -222,5 +222,5 @@ const closeWindow = (windowId) => {
     removedWindow.remove();
 }
 
-getAllCities();
+getAllBooks();
 

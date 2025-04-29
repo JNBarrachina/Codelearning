@@ -41,6 +41,8 @@ app.post("/animals", (req, res) => {
 
             currentID++;
             animals.push(newAnimal);
+
+            res.sendStatus(200);
         }) 
 
         .catch((error) => {
@@ -77,7 +79,6 @@ app.put("/animals/:id", (req, res) => {
         res.send("No ha sido posible modificar el animal seleccionado");
     }
 });
-
 
 app.listen(port, () => {
     console.log(`Escuchando...`);

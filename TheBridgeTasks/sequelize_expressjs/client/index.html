@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APIPOLIS</title>
+    <link rel="stylesheet" href="library.css">
+</head>
+
+<body>
+    <header>
+        <h1>APILIBRARY</h1>
+        <section class="animalsImgs">
+            <img src="imgs/book.svg" alt="" class="libraryimg">
+        </section>
+    </header>
+    <main id="mainpage">
+        <article class="animalsBox">
+            <form id="addAnimal" class="animalsForm">
+                <input type="text" placeholder="Nombre del libro" id="inputName">
+                <input type="text" placeholder="Descripción" id="inputDescription">
+                <input type="number" placeholder="Número de páginas" id="inputPages">
+                <button id="btnAddAnimal" itemid="addBtn">Añadir libro</button>
+                <p id="infoMessage" class="infoMessage"></p>
+            </form>
+        </article>
+        <section id="animalsList" class="animalsList">
+        </section>
+    </main>
+    <script src="library.js"></script>
+</body>
+
+</html>

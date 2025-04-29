@@ -1,5 +1,5 @@
 
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "http://localhost:5376";
 
 const mainPage = document.getElementById("mainpage");
 const postAnimal = document.getElementById("btnAddAnimal");
@@ -18,63 +18,66 @@ function checkData(event){
         alert("Introduce todos los datos");
         return;
     }
+    else if (animalStrength.value < 1 || animalStrength.value > 10){
+        alert("La fuerza debe ser un número entre 1 y 10");
+        return;
+    }
     
-    const newCity = {
-        city: animalName.value,
-        country: animalStrength.value
+    const newAnimal = {
+        name: animalName.value,
+        strength: animalStrength.value
     }
 
-    addCity(newCity);
+    addAnimal(newAnimal);
 }
 
-async function addCity(newCity){
-    await fetch(`${BASE_URL}/cities`, {
+async function addAnimal(newAnimal){
+    await fetch(`${BASE_URL}/animals`, {
         method: "POST",
-        body: JSON.stringify(newCity),
+        body: JSON.stringify(newAnimal),
         headers: {
         "Content-Type": "application/json",
         },
     })
 
-    message.innerText = "Ciudad anadida correctamente";
-    getAllCities();
+    message.innerText = "Animal anadido correctamente";
+    getAllAnimals();
 }
 
-function getAllCities(){
-    fetch(`${BASE_URL}/cities`)
+function getAllAnimals(){
+    fetch(`${BASE_URL}/animals`)
     .then((response) => response.json())
     .then((data) => {
         animalsSection.innerHTML = "";
     
-        data.forEach(city => {
-            const singleCityBox = document.createElement("article");
-            singleCityBox.setAttribute("class", "singleAnimalBox")
+        data.forEach(animal => {
+            const singleAnimalBox = document.createElement("article");
+            singleAnimalBox.setAttribute("class", "singleAnimalBox")
 
-            const cityName = city.city.charAt(0).toUpperCase() + city.city.slice(1);
+            const animalName = animal.name.charAt(0).toUpperCase() + animal.name.slice(1);
 
-            const singleCity = document.createElement("button");
-            singleCity.setAttribute("class", "animalNameBox");
-            singleCity.setAttribute("id", `${city.id}`);
-            singleCity.addEventListener("click", ()  => confirmRemove(city));
-            singleCity.addEventListener("mouseover", () => changeBtnText(singleCity.id));
-            singleCity.innerText = `${cityName}, ${city.country}`;
+            const singleAnimal = document.createElement("button");
+            singleAnimal.setAttribute("class", "animalNameBox");
+            singleAnimal.setAttribute("id", `${animal.id}`);
+            singleAnimal.addEventListener("click", ()  => confirmRemove(animal));
+            singleAnimal.addEventListener("mouseover", () => changeBtnText(singleAnimal.id));
+            singleAnimal.innerText = `${animalName}: ${animal.strength} de fuerza`;
 
-            const cityBtns = document.createElement("section");
-            cityBtns.setAttribute("class", "cityBtnsBox");
+            const animalBtns = document.createElement("section");
 
-            const cityImg = document.createElement("button");
-            cityImg.innerText = "Ver";
-            // cityImg.addEventListener("click", () => imgWindow(animal.img))
+            const animalImg = document.createElement("button");
+            animalImg.innerText = "Ver";
+            animalImg.addEventListener("click", () => imgWindow(animal.img))
 
-            const modCity = document.createElement("button");
-            modCity.setAttribute("class", "modAnimalBtn");
-            modCity.innerText = "Modificar";
-            modCity.addEventListener("click", () => modifyWindow(city));
+            const modAnimal = document.createElement("button");
+            modAnimal.setAttribute("class", "modAnimalBtn");
+            modAnimal.innerText = "Modificar";
+            modAnimal.addEventListener("click", () => modifyWindow(animal));
 
-            cityBtns.append(cityImg, modCity);
+            animalBtns.append(animalImg, modAnimal);
 
-            singleCityBox.append(singleCity, cityBtns);
-            animalsSection.append(singleCityBox);
+            singleAnimalBox.append(singleAnimal, animalBtns);
+            animalsSection.append(singleAnimalBox);
         });
 
         animalsSection.style.visibility = "visible";
@@ -85,18 +88,18 @@ function getAllCities(){
     });
 }
 
-const confirmRemove = (city) => {
+const confirmRemove = (animal) => {
     const removeBox = document.createElement("div");
     removeBox.setAttribute("class", "removeBox");
     removeBox.setAttribute("id", "removeWindow");
 
     const removeMessage = document.createElement("p");
-    removeMessage.innerText = `¿Quieres eliminar ${city.city} definitivamente?`;
+    removeMessage.innerText = `¿Quieres eliminar ${animal.name} definitivamente?`;
 
     const removeBtns = document.createElement("div");
     removeBtns.setAttribute("class", "removeBtnsBox");
     const removeYes = document.createElement("button");
-    removeYes.addEventListener("click", () => removeCity(city.id, removeBox.id))
+    removeYes.addEventListener("click", () => removeAnimal(animal.id, removeBox.id))
     removeYes.innerText = "SÍ";
     const removeNo = document.createElement("button");
     removeNo.addEventListener("click", () => closeWindow(removeBox.id));
@@ -107,8 +110,8 @@ const confirmRemove = (city) => {
     mainPage.append(removeBox);
 }
 
-const removeCity = (removedCity, removeBox) => {
-    fetch(`${BASE_URL}/cities/${removedCity}`, {
+const removeAnimal = (removedAnimal, removeBox) => {
+    fetch(`${BASE_URL}/animals/${removedAnimal}`, {
         method: "DELETE", // or 'PUT'
         headers: {
         "Content-Type": "application/json",
@@ -122,10 +125,11 @@ const removeCity = (removedCity, removeBox) => {
     .then((response) => console.log("Success:", response));
 
     closeWindow(removeBox);
-    getAllCities();
+    getAllAnimals();
 }
 
-const modifyWindow = (cityToUpdate) => {
+const modifyWindow = (animalToUpdate) => {
+    console.log("Modificar animal", animalToUpdate);
 
     const updateBox = document.createElement("div");
     updateBox.setAttribute("class", "updateBox");
@@ -133,14 +137,14 @@ const modifyWindow = (cityToUpdate) => {
 
     const updateForm = document.createElement("form");
     updateForm.innerHTML = `<form id="modifyAnimal" class="updateForm">
-        <input type="text" placeholder="Nombre: ${cityToUpdate.city}" id="modifyInputName">
-        <input type="text" placeholder="País: ${cityToUpdate.country}" id="modifyInputStrength">
+        <input type="text" placeholder="Nombre: ${animalToUpdate.name}" id="modifyInputName">
+        <input type="number" placeholder="Fuerza: ${animalToUpdate.strength}" id="modifyInputStrength">
     </form>`
 
     const updateBtns = document.createElement("div");
     updateBtns.setAttribute("class", "updateBtnsBox");
     const updateYes = document.createElement("button");
-    updateYes.addEventListener("click", () => updateCity(cityToUpdate.id, updateBox.id))
+    updateYes.addEventListener("click", () => updateAnimal(animalToUpdate.id, updateBox.id))
     updateYes.innerText = "Actualizar";
     const updateNo = document.createElement("button");
     updateNo.addEventListener("click", () => closeWindow(updateBox.id));
@@ -168,24 +172,28 @@ const imgWindow = (animalImageUrl) => {
     mainPage.append(imgBox);
 }
 
-const updateCity = (cityToUpdateId, updateBox) => {
+const updateAnimal = (animalToUpdateId, updateBox) => {
     const newName = document.getElementById("modifyInputName");
-    const newCountry = document.getElementById("modifyInputStrength");
+    const newStrength = document.getElementById("modifyInputStrength");
 
-    if (newName.value == "" || newCountry.value == ""){
+    if (newName.value == "" || newStrength.value == ""){
         alert("No has completado todos los campos");
         return;
     }
-    
-    const modifiedCity = {
-        id: cityToUpdateId,
-        city: newName.value,
-        country: newCountry.value
+    else if (newStrength.value < 1 || newStrength.value > 10){
+        alert("La fuerza debe ser un número entre 1 y 10");
+        return;
     }
     
-    fetch(`${BASE_URL}/cities/${cityToUpdateId}`, {
+    const modifiedAnimal = {
+        id: animalToUpdateId,
+        name: newName.value,
+        strength: newStrength.value
+    }
+    
+    fetch(`${BASE_URL}/animals/${animalToUpdateId}`, {
         method: "PUT",
-        body: JSON.stringify(modifiedCity),
+        body: JSON.stringify(modifiedAnimal),
         headers: {
         "Content-Type": "application/json",
         },
@@ -198,7 +206,7 @@ const updateCity = (cityToUpdateId, updateBox) => {
     .then((response) => console.log("Success:", response));
 
     closeWindow(updateBox)
-    getAllCities();
+    getAllAnimals();
 }
 
 const changeBtnText = (id) => {
@@ -222,5 +230,4 @@ const closeWindow = (windowId) => {
     removedWindow.remove();
 }
 
-getAllCities();
-
+getAllAnimals();

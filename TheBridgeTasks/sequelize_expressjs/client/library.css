@@ -26,7 +26,7 @@ header{
     padding: 0.2rem;
     gap: 1rem;
 
-    background-color: rgb(144, 179, 232);
+    background-color: beige;
 
     position: sticky;
     top: 0;
@@ -48,8 +48,9 @@ h1{
     color: black;
 }
 
-.cityimg{
+.libraryimg{
     height: 50px;
+    margin-top: 8px;
 }
 
 .animalsForm{
