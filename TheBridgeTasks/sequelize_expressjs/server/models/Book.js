@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
-const connectDB = require("../db");
+const db = require("../db");
 
-const Book = Sequelize.define(
+const defineBookModel = db.sequelize.define(
     'Books',
     {
       title: {
@@ -12,12 +12,11 @@ const Book = Sequelize.define(
         type: DataTypes.STRING,
       },
       length: {
-        tyoe: DataTypes.INTEGER,
+        type: DataTypes.INTEGER,
       }
     },
-    {
-    },
-);
+    {}
+  );
 
-connectDB.sequelize.sync();
-exports.Book = Book;
+
+module.exports = defineBookModel;
