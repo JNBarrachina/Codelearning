@@ -18,5 +18,5 @@ const defineBookModel = db.sequelize.define(
     {}
   );
 
-
+  
 module.exports = defineBookModel;

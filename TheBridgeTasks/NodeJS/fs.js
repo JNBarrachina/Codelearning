@@ -2,7 +2,15 @@ const fs = require("node:fs");
 
 const stats = fs.statSync("test.txt");
 const test = fs.readFileSync("test.txt", "utf-8"); //Forma síncrona de leer archivos.
-const test2 = fs.readFileSync("test2.txt", "utf-8");
+
+fs.readFile("test2.txt", "utf-8", (err, data) => {
+    if (err) throw err;
+    console.log(data);
+}); // Asincronía para la lectura del archivo mediante callback.
+
+setTimeout(() => {
+    console.log("Temporizador bloqueante");
+}, 1000);
 
 console.log(
     stats.isFile(),
@@ -12,4 +20,3 @@ console.log(
 
 console.log("Ejecutando otras cosas...");
 
-console.log(test2);

@@ -1,5 +1,6 @@
 const http = require("http");
-const os = require("node:os");
+const os = require("node:os");  //Módulo para extraer info del sistema opertivo.
+
 
 http.createServer((req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -16,7 +17,7 @@ http.createServer((req, res) => {
     res.write(JSON.stringify(data));
     return res.end();
 
-}).listen(7777);
+}).listen(0);
 
 console.log("Nombre del sistema operativo", os.platform())
 console.log(os.cpus());

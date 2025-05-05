@@ -18,7 +18,7 @@ const getAuthors = async (req, res) => {
 const createBook = async (req, res) => {
 
     const createBook = await bookModel.create({
-        title: "",
+        title: "El tejido de la naturaleza",
         description: "Ensayo publicado en Barlin Libros",
         length: 350
     })
@@ -29,11 +29,11 @@ const createBook = async (req, res) => {
 const createAuthor = async (req, res) => {
 
     const createAuthor = await authorModel.create({
-        name: "Isaac Asimov",
-        nationality: "USA",
+        name: "Carlos Ruiz Zafon",
+        nationality: "SPA",
     })
 
-    res.send(`Libro creado con id: ${createAuthor.id}`);
+    res.send(`Autor creado con id: ${createAuthor.id}`);
 }
 
 exports.getGreetings = getGreetings;
