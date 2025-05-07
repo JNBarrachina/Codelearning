@@ -1,8 +1,16 @@
 const bookModel = require("../models/Book");
 const authorModel = require("../models/Author");
+const memberModel = require("../models/Members");
+const loanModel = require("../models/Loans");
 
 const getGreetings = async (req, res) => {
     res.send("Bienvenido.");
+}
+
+const addMember = async (req, res) => {
+    const createBook = await bookModel.create(req.body);
+
+    res.send(`Nuevo miembro añadido: ${createBook.name}`);
 }
 
 const getBooks = async (req, res) => {
