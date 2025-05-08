@@ -11,15 +11,20 @@ const defineBookModel = db.sequelize.define(
       author: {
         type: DataTypes.STRING,
       },
+      publisher: {
+        type: DataTypes.STRING,
+      },
       publication_year: {
         type: DataTypes.INTEGER,
       },
-      stock: {
-        type: DataTypes.INTEGER,
+      isbn: {
+        type: DataTypes.STRING,
         allowNull: false,
       }
     },
-    {}
+    {
+      timestamps: false  // <---- esto elimina createdAt y updatedAt
+    }
   );
   
 module.exports = defineBookModel;

@@ -1,5 +1,6 @@
-const { DataTypes, BelongsTo } = require("sequelize");
+const { DataTypes } = require("sequelize");
 const db = require("../db");
+
 const Book = require("./Book");
 const Member = require("./Members");
 
@@ -18,7 +19,9 @@ const defineLoansModel = db.sequelize.define(
         allowNull: false,
       }
     },
-    {}
+    {
+      timestamps: false  // <---- esto elimina createdAt y updatedAt
+    }
   );
 
 

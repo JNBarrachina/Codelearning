@@ -13,7 +13,9 @@ const defineMembersModel = db.sequelize.define(
         allowNull: false,
       }
     },
-    {}
+    {
+      timestamps: false  // <---- esto elimina createdAt y updatedAt
+    }
   );
 
   

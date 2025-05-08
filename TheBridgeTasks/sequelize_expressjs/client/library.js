@@ -45,6 +45,8 @@ function getAllBooks(){
     .then((response) => response.json())
     .then((data) => {
         animalsSection.innerHTML = "";
+
+        console.log(data);
     
         data.forEach(book => {
             const singleBookBox = document.createElement("article");
