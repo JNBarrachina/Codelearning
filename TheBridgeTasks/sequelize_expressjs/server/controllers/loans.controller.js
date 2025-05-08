@@ -19,16 +19,18 @@ const loanBook = async (req, res) => {
     }
 
     const currentDate = new Date();
-    const calculatedDeadline = currentDate.getDate() + 30 * 24 * 60 * 60 * 1000;
+    const calculatedDeadline = new Date (currentDate.getDate() + 30 * 24 * 60 * 60 * 1000);
 
-    const createdLoan = await Loan.create({
-        loan_date: currentDate,
-        deadline: calculatedDeadline,
-        BookId: bookId,
-        MemberId: memberId
-    });
+    res.send(calculatedDeadline);
 
-    res.status(201).send({deadline: createdLoan.deadline});
+    // const createdLoan = await Loan.create({
+    //     loan_date: currentDate,
+    //     deadline: calculatedDeadline,
+    //     BookId: bookId,
+    //     MemberId: memberId
+    // });
+
+    // res.status(201).send({deadline: createdLoan.deadline});
 }
 
 const returnBook = async (req, res) => {
