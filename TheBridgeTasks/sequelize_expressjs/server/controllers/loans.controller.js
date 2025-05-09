@@ -19,24 +19,23 @@ const loanBook = async (req, res) => {
     }
 
     const currentDate = new Date();
-    const calculatedDeadline = new Date (currentDate.getDate() + 30 * 24 * 60 * 60 * 1000);
+    const calculatedDeadline = new Date(currentDate);
+    calculatedDeadline.setDate(currentDate.getDate() + 30);
 
-    res.send(calculatedDeadline);
+    const createdLoan = await Loan.create({
+        loan_date: currentDate,
+        deadline: calculatedDeadline,
+        BookId: bookId,
+        MemberId: memberId
+    });
 
-    // const createdLoan = await Loan.create({
-    //     loan_date: currentDate,
-    //     deadline: calculatedDeadline,
-    //     BookId: bookId,
-    //     MemberId: memberId
-    // });
-
-    // res.status(201).send({deadline: createdLoan.deadline});
+    res.status(201).send({deadline: createdLoan.deadline});
 }
 
 const returnBook = async (req, res) => {
     const bookId = req.body.bookId;
 
-    const modifyLoan = Loan.update(
+    const modifyLoan = await Loan.update(
         { return_date: new Date() },
         { 
             where: 
@@ -48,9 +47,32 @@ const returnBook = async (req, res) => {
     );
 
     res.send(modifyLoan);
-
 }
+
+const loansMember = async (req, res) => {
+    const idMember = req.query.member;
+
+    const foundMember =  await Member.findByPk(idMember);
+    if (!foundMember){
+        res.status(404).send("Member doesnt exist");
+        return;
+    }
+
+    const getMemberLoans = await Loan.findAll(
+        { 
+            where: 
+            { 
+                MemberId: idMember,
+                return_date: null
+            }
+        }
+    )
+    
+    res.send(getMemberLoans);
+}
+
 
 exports.loanBook = loanBook;
 exports.returnBook = returnBook;
+exports.loansMember = loansMember;
 

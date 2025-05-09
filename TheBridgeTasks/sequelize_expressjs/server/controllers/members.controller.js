@@ -13,4 +13,3 @@ const addMember = async (req, res) => {
 }
 
 exports.addMember = addMember;
-
