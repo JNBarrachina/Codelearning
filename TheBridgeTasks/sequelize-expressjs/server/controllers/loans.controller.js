@@ -1,6 +1,7 @@
 const Loan = require("../models/Loans");
 const Book = require("../models/Book");
 const Member = require("../models/Members");
+const { Model } = require("sequelize");
 
 const loanBook = async (req, res) => {
     const memberId = req.body.memberId;
@@ -70,7 +71,17 @@ const loansMember = async (req, res) => {
 
     const getMemberLoans = await Loan.findAll(
         { 
-            where: filteredWhere
+            attributes: ['loan_date', 'return_date', 'deadline'],
+            include: [
+                {
+                    model: Book,
+                    attributes: ['id','title','author', 'publisher', 'isbn'],
+                },
+            ],
+            where: filteredWhere,
+            // order: [
+            //     ['deadline', 'ASC']
+            // ]
         }
     )
     
