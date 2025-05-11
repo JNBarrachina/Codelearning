@@ -51,6 +51,7 @@ const returnBook = async (req, res) => {
 
 const loansMember = async (req, res) => {
     const idMember = req.query.member;
+    const activeLoans = req.query.active;
 
     const foundMember =  await Member.findByPk(idMember);
     if (!foundMember){
@@ -58,19 +59,23 @@ const loansMember = async (req, res) => {
         return;
     }
 
+    const filteredWhere = {};
+
+    if (activeLoans == "true") {
+        filteredWhere.MemberId = idMember;
+        filteredWhere.return_date = null;
+    } else {
+        filteredWhere.MemberId = idMember;
+    }
+
     const getMemberLoans = await Loan.findAll(
         { 
-            where: 
-            { 
-                MemberId: idMember,
-                return_date: null
-            }
+            where: filteredWhere
         }
     )
     
     res.send(getMemberLoans);
 }
-
 
 exports.loanBook = loanBook;
 exports.returnBook = returnBook;

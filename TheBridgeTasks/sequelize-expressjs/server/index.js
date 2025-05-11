@@ -18,10 +18,6 @@ const main = () => {
   app.use("/members", membersRouter);
   app.use("/loans", loansRouter);
 
-  app.get("/", (req, res) => {
-    res.send("Hola");
-  })
-
   app.use(express.static('../client'));
 
   db.sequelize.sync().then(() => {
