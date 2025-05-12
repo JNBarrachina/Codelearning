@@ -1,7 +1,6 @@
 const Loan = require("../models/Loans");
 const Book = require("../models/Book");
 const Member = require("../models/Members");
-const { Model } = require("sequelize");
 
 const loanBook = async (req, res) => {
     const memberId = req.body.memberId;
@@ -62,7 +61,7 @@ const loansMember = async (req, res) => {
 
     const filteredWhere = {};
 
-    if (activeLoans == "true") {
+    if (activeLoans == true) {
         filteredWhere.MemberId = idMember;
         filteredWhere.return_date = null;
     } else {

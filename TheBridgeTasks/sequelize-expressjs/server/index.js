@@ -7,6 +7,9 @@ const db = require("./db")
 const booksRouter = require("./routes/books.routes");
 const membersRouter = require("./routes/members.routes");
 const loansRouter = require("./routes/loans.routes");
+const usersRouter = require("./routes/users.routes");
+
+const {authMiddleware} = require("./middlewares/auth");
 
 const main = () => {
   const app = express();
@@ -16,11 +19,12 @@ const main = () => {
 
   app.use("/books", booksRouter);
   app.use("/members", membersRouter);
-  app.use("/loans", loansRouter);
+  app.use("/loans", authMiddleware, loansRouter);
+  app.use("/", usersRouter);
 
   app.use(express.static('../client'));
 
-  db.sequelize.sync().then(() => {
+  db.sequelize.sync({alter: true}).then(() => {
     console.log("Base de datos sincronizada correctamente.")
   })
 
