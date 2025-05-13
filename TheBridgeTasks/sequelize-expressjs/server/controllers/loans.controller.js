@@ -2,19 +2,22 @@ const Loan = require("../models/Loans");
 const Book = require("../models/Book");
 const Member = require("../models/Members");
 
+const booksRepository = require("../repositories/books.repository");
+const usersRepository = require("../repositories/users.repository");
+
 const loanBook = async (req, res) => {
     const memberId = req.body.memberId;
     const bookId = req.body.bookId;
-
-    const foundBook =  await Book.findByPk(bookId);
-    if (!foundBook){
-        res.status(404).send("Book doesnt exist");
+    
+    const foundedMember = await usersRepository.findMember(memberId);
+    if (!foundedMember) {
+        res.status(400).send("El usuario no existe");
         return;
     }
 
-    const foundMember =  await Member.findByPk(memberId);
-    if (!foundMember){
-        res.status(404).send("Member doesnt exist");
+    const foundedBook = await booksRepository.findBook(bookId);
+    if (!foundedBook) {
+        res.status(400).send("El libro no existe");
         return;
     }
 

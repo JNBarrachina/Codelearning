@@ -1,23 +1,22 @@
 const Member = require("../models/Members");
+const usersRepository = require("../repositories/users.repository");
+
+const jwt = require("jsonwebtoken");
+const { jwt_secret } = require("../config/config.json") ["development"];
 
 const authMiddleware = async (req, res, next) => {
-    const userKey = req.headers.llave;
+    const token = req.headers.authorization;
 
-    if(!userKey){
-        res.status(401).send("Missing auth header");
+    if (!token){
+        res.status(401).send("Missing auth header")
         return;
     }
 
-    const checkUser = await Member.findByPk(userKey);
-    if (!checkUser){
-        res.status(401).send("Invalid auth user");
-        return;
-    }
+    const payload = jwt.verify(token, jwt_secret);
+    const userId = payload.id;
 
-    console.log("SE EJECUTA EL MIDDLEWATE", checkUser.dataValues);
     req.user = checkUser.dataValues;
-
-    next()
+    next();
 };
 
 exports.authMiddleware = authMiddleware;

@@ -5,7 +5,6 @@ const cors = require("cors");
 const db = require("./db")
 
 const booksRouter = require("./routes/books.routes");
-const membersRouter = require("./routes/members.routes");
 const loansRouter = require("./routes/loans.routes");
 const usersRouter = require("./routes/users.routes");
 
@@ -18,9 +17,8 @@ const main = () => {
   app.use(express.json());
 
   app.use("/books", booksRouter);
-  app.use("/members", membersRouter);
   app.use("/loans", authMiddleware, loansRouter);
-  app.use("/", usersRouter);
+  app.use("/users", usersRouter);
 
   app.use(express.static('../client'));
 

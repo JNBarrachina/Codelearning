@@ -20,6 +20,9 @@ const defineMembersModel = db.sequelize.define(
       registration_date: {
         type: DataTypes.DATE,
         allowNull: false,
+      },
+      token: {
+        type: DataTypes.STRING,
       }
     },
     {
