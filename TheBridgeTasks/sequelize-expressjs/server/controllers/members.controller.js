@@ -1,6 +1,9 @@
 const Member = require("../models/Members");
 const bcryptjs = require("bcryptjs");
 
+const booksRepository = require("../repositories/books.repository");
+const usersRepository = require("../repositories/users.repository");
+
 const jwt = require("jsonwebtoken");
 const { jwt_secret } = require("../config/config.json") ["development"];
 
