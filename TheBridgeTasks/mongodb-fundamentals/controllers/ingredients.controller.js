@@ -1,21 +1,34 @@
-const Ingredient = require("../models/Ingredient");
+const { default: mongoose } = require("mongoose");
+const {Ingredient} = require("../models/Ingredient");
 
 const getIngredients = async (req, res) => {
-    res.send("Endpoint de lectura de recetas");
+    const foundedIngredient = await Ingredient.find({userId: req.body.id});
+    res.send(foundedIngredient);
 }
 
 const addIngredient = async (req, res) => {
-    res.send("Endpoint de creación de recetas");
+    try {
+        const newIngredient = new Ingredient(req.body);
+        await newIngredient.save();
+        res.send(newIngredient);
+    } catch (error) {
+        res.status(500).send("Hubo un error")
+    }
 }
 
+
 const updateIngredient = async (req, res) => {
-    res.send("Endpoint de creación de recetas");
+    const updatedIngredient = await Ingredient.updateOne({name: req.body.name}, {quantity: req.body.quantity})
+    res.send(updatedIngredient);
 }
+
 
 const removeIngredient = async (req, res) => {
     res.send("Endpoint de creación de recetas");
 }
 
 
-exports.getRecipe = getRecipe;
-exports.createRecipe = createRecipe;
+exports.getIngredients = getIngredients;
+exports.addIngredient = addIngredient;
+exports.updateIngredient = updateIngredient;
+exports.removeIngredient = removeIngredient;
