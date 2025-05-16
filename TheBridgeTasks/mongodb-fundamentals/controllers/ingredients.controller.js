@@ -1,4 +1,3 @@
-const { default: mongoose } = require("mongoose");
 const {Ingredient} = require("../models/Ingredient");
 
 const getIngredients = async (req, res) => {
@@ -8,7 +7,7 @@ const getIngredients = async (req, res) => {
 
 const addIngredient = async (req, res) => {
     try {
-        const newIngredient = new Ingredient(req.body);
+        const newIngredient = new Ingredient({...req.body, userId: req.user._id});
         await newIngredient.save();
         res.send(newIngredient);
     } catch (error) {
@@ -27,8 +26,4 @@ const removeIngredient = async (req, res) => {
     res.send("Endpoint de creación de recetas");
 }
 
-
-exports.getIngredients = getIngredients;
-exports.addIngredient = addIngredient;
-exports.updateIngredient = updateIngredient;
-exports.removeIngredient = removeIngredient;
+module.exports = {getIngredients, addIngredient, updateIngredient, removeIngredient};

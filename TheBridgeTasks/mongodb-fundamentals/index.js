@@ -9,6 +9,8 @@ const usersRouter = require("./routes/users.routes");
 const ingredientsRouter = require("./routes/ingredients.routes");
 const recipesRouter = require("./routes/recipes.routes");
 
+const {authMiddleware} = require("./middlewares/auth");
+
 const main = () => {
     const app = express();
 
@@ -16,8 +18,8 @@ const main = () => {
     app.use(express.json());
 
     app.use("/users", usersRouter);
-    app.use("/ingredients", ingredientsRouter);
-    app.use("/recipes", recipesRouter);
+    app.use("/ingredients", authMiddleware, ingredientsRouter);
+    app.use("/recipes", authMiddleware, recipesRouter);
 
     dbConnect();
 
