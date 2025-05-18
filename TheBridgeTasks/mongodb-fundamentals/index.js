@@ -19,7 +19,7 @@ const main = () => {
 
     app.use("/users", usersRouter);
     app.use("/ingredients", authMiddleware, ingredientsRouter);
-    app.use("/recipes", authMiddleware, recipesRouter);
+    app.use("/recipes", recipesRouter);
 
     dbConnect();
 
