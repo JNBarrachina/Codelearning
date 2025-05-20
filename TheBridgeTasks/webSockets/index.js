@@ -1,6 +1,7 @@
 import { Server } from "socket.io";
 
 const io = new Server(3000)
+//Using sockets.io
 
 io.on("connection", (socket) => {
     console.log("Conexion recibida");
