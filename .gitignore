@@ -4,3 +4,5 @@
 /TheBridgeTasks/nodeJS/node_modules
 /TheBridgeTasks/sequelize-expressjs/server/node_modules
 /TheBridgeTasks/mongodb-fundamentals/node_modules
+/TheBridgeTasks/webScraping/node_modules
+/TheBridgeTasks/webSockets/node_modules
