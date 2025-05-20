@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Websockets Client Test</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Chateito</h1>
+    <article id="chatBox" class="chatBox">
+        <section id="messagesBox" class="messagesBox"></section>
+        <section id="userMessagesBox">
+            <input type="text" name="" id="userMessage" placeholder="Escribe tu mensaje...">
+            <button id="sendMessage" class="sendMessage">Enviar</button>
+        </section>
+    </article>
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"
+        integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+"
+        crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
