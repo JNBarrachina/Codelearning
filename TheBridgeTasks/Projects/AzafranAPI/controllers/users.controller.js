@@ -5,6 +5,8 @@ const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../config/config");
 
 const loginUser = async (req, res) => {
+    // #swagger.tags = ['Users']
+
     const {username, password} = req.body;
 
     const existingUser = await User.findOne(
@@ -28,6 +30,8 @@ const loginUser = async (req, res) => {
 }
 
 const registerUser = async (req, res) => {
+    // #swagger.tags = ['Users']
+
     const {name, username, password, email, country} = req.body
     const hashedPassword =  bcryptjs.hashSync(password);
 

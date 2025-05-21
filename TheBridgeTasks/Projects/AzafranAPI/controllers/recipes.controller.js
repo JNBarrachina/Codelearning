@@ -5,10 +5,14 @@ const {GoogleGenAI, Type} = require("@google/genai");
 const ai = new GoogleGenAI({ apiKey: "API_KEY" });
 
 const getUserRecipes = async (req, res) => {
+    // #swagger.tags = ['Recipes']
+
     res.send("La IA crea las recetas");
 }
 
 const getNewRecipes = async (req, res) => {
+    // #swagger.tags = ['Recipes']
+
     const [...recipeIngredients] = req.body.ingredients;
 
     const response = await ai.models.generateContent({
