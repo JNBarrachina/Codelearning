@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT ?? 3000 //Using environment variable
 
 const cors = require("cors");
 app.use(cors());
@@ -46,6 +46,6 @@ app.get("/users", (req, res) => {
 });
 
 
-app.listen(port, () => {
+app.listen(PORT, () => {
     console.log(`Escuchando...`);
 });
