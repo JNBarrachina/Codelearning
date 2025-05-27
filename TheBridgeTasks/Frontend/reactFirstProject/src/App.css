@@ -18,6 +18,35 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+.humansSection{  
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+
+  gap: 1rem;
+}
+
+.humanBox{
+  width: 30%;
+
+  background-color: rgb(188, 188, 188);
+  color: black;
+
+  border: 2px solid whitesmoke;
+  border-radius: 0.4rem;
+}
+
+.humanBox:hover{
+  transform: scale(1.1);
+  transition: 0.4s;
+}
+
+.humanImg{
+  height: 120px;
+  border-radius: 0.4rem;
+}
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
