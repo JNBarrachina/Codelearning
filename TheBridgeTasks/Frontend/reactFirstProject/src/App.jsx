@@ -6,7 +6,7 @@ import './App.css'
 
 import { Titulito } from './components/Titulito'
 import { Humano } from './components/Humano'
-import { FotoHumano } from './components/FotoHumano'
+import { Heading } from './components/Heading'
 
 function App() {
   
@@ -19,21 +19,9 @@ function App() {
     { name: "Carlos", age: 24, origin : "Urano"},
     { name: "Sergio", age: 25, origin : "Neptuno"},
   ]
-  const humanImgUrl = "https://imgs.search.brave.com/cZ4WF2qbuipZ0HZUo6yaAIQ6q-ZyYoZGQU6EYqAU6NI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vdWlkN0g5/ZnNDQ2hBYWxNY1Bn/cExyVzhLMlFRYUZQ/UW0xakxPNVJ0cXVZ/OC9yczpmaXQ6NTAw/OjA6MDowL2c6Y2Uv/YUhSMGNITTZMeTly/Y21sMC9ZUzFoY25S/cGMzUnpMbTl5L1p5/OTFjR3h2WVdSekwy/UmwvWm1GMWJIUXZi/M0IwYVcxcC9lbVZr/THpOWUx6QXZOUzh3/L05UWmhPVEJqTTJV/ek9HUTAvWWpabE16/TmhOVGRsT0dNMC9O/MlV5WmpFNVpERmha/VFF5L05UVTNYekpm/TkRBd2VEUXcvTUM1/cWNHVm4";
+  const humanImgUrl = "https://imgs.search.brave.com/xMIAXghkBfRcjkhTCAiqGubz9HdD4nkhh8rVb2Qp1rs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vd2ZJS0pJ/V0lsU2ZndjlKSnJL/bFN6enM3WXJXVFFq/OHVLRGpvR0kycGVn/QS9yczpmaXQ6NTAw/OjA6MDowL2c6Y2Uv/YUhSMGNITTZMeTl3/YVdOei9MbU55WVds/NWIyNHVZMjl0L0x6/SXdNalF0TURrdE1E/Z3YvZDNadFptRlVZ/MVJSYVhWby9VM1ZG/UTA5bmMwTlZaeTUz/L1pXSnc";
 
-    const [count, setCount] = useState()
-
-    const [menu, setMenu] =  useState("inicio")
-
-    const menuData = (menu) => {
-      if (menu == "inicio") {
-        return titulos.map((titulo) => <Titulito titulo={titulo} />)
-      }
-      
-      if (menu == "humanos") {
-        return humansArray.map((humanElem) => <Humano humanProps={humanElem} img={humanImgUrl}/>)
-      }
-    }
+  const [menu, setMenu] =  useState("inicio")
 
   return (
     <>
@@ -45,37 +33,31 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
 
-      <div className="mainMenu">
+      <nav className="mainMenu">
         <button onClick={() => setMenu("inicio")}>
           Inicio
+        </button>
+        <button onClick={() => setMenu("titulos")}>
+          Títulos
         </button>
         <button onClick={() => setMenu("humanos")}>
           Humanos
         </button>
-      </div>
+      </nav>
 
-      {menuData(menu)}
-
-      {/* <div className='humansSection'>
-          
-      </div> */}
+      <Heading headingText={menu.toUpperCase()} />
+      <section className='humansSection'>
+        {menu == "inicio" && <p>Esta es la página de inicio</p>}
+        {menu == "titulos" && titulos.map((titulo) => <Titulito titulo={titulo} />)}
+        {menu == "humanos" && humansArray.map((humanElem) => <Humano humanProps={humanElem} img={humanImgUrl}/>)}
+      </section>
       
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
     </>
   )
 }
-
 
 export default App
