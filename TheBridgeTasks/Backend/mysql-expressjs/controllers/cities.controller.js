@@ -1,54 +1,28 @@
-import connectdb from "../dbconnect.js";
+import { CityModel } from "../models/city.model.js";
 
-const db = await connectdb();
-
-export const getCities = (req, res) => {
-    db.query("SELECT * FROM cities", (err, result) => {
-        if (err) throw err;
-        res.send(result);
-    });
+export const getAllCities = async (req, res) => {
+    const cities = await CityModel.findAll();
+    res.send(cities);
 }
 
-export const addCity = (req, res) => {
-    let newCity = req.body;
-    let sqlPost =  `INSERT INTO cities (name, country) values ("${newCity.name}", "${newCity.country}");`;
-
-    db.query(sqlPost, (err, result) => {
-        if (err) throw err;
-        res.send("Ciudad añadida");
-    });
+export const addCity = async (req, res) => {
+    let {name, country} = req.body;
+    const newCity = await CityModel.newCity(name, country);
+    res.send(newCity);
 }
 
-export const updateCity = (req, res) => {
-    const idToPut = parseInt(req.params.id);
-    const newCityData = req.body;
-        
-    let sqlPut = `UPDATE cities SET city = "${newCityData.city}", country = "${newCityData.country}" WHERE id = ${idToPut}`;
+export const updateCity = async (req, res) => {
+    const movieId = parseInt(req.params.id);
+    const {name, country} = req.body;
 
-    db.query(sqlPut, (err, result) => {
-        if (err) throw err;
-        res.sendStatus(200);
-    });
+    const updateCity = await CityModel.updateCity(movieId, name, country);
+    res.send(updateCity);
 }
 
-export const deleteCity = (req, res) => {
+export const deleteCity = async (req, res) => {
     let removedCity = req.params.id;
 
-    let checkCity = `SELECT * FROM cities WHERE (id) = ${removedCity}`;
-    let sqlDelete =  `DELETE FROM cities WHERE (id) = ("${removedCity}");`
-
-    db.query(checkCity, (err, result) => {
-        if (err) throw err;
-
-        if (result.length == 0){
-            res.send("No existe ciudad con ese id");
-        }
-        else{
-            connectdb.query(sqlDelete, (err, result) => {
-                if (err) throw err;
-                res.send("Ciudad eliminada");
-            });
-        }
-    });
+    const deleteCity = await CityModel.deleteCity(removedCity);
+    res.send(deleteCity);
 }
 
