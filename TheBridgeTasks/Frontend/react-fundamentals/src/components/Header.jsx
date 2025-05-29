@@ -4,20 +4,12 @@ export const Header = () => {
     return (
         <header className="mainHeader">
             <p className="headerTitle">React Fundamentals</p>
-            <ul className="headerNav">
-                <li>
-                    <Link to="/">Inicio</Link>
-                </li>
-                <li>
-                    <Link to="/count">Contador</Link>
-                </li>
-                <li>
-                    <Link to="/pass">PassVerifier</Link>
-                </li>
-                <li>
-                    <Link to="/register">Register</Link>
-                </li>
-            </ul>
+            <nav className="headerNav">
+                <Link to="/">Inicio</Link>
+                <Link to="/count">Contador</Link>
+                <Link to="/pass">PassVerifier</Link>
+                <Link to="/register">Register</Link>
+            </nav>
         </header>
     )
 }
