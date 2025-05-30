@@ -8,6 +8,7 @@ export const Header = () => {
                 <Link to="/">Inicio</Link>
                 <Link to="/count">Contador</Link>
                 <Link to="/pass">PassVerifier</Link>
+                <Link to="/team">Team</Link>
                 <Link to="/register">Register</Link>
             </nav>
         </header>
