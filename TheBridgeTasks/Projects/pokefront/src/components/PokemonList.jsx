@@ -3,13 +3,14 @@ import { useState, useEffect } from 'react'
 export const PokemonList = () => {
 
     const [pokelist, setPokelist] = useState([])
-    const [search, setSearch] = useState('pikachu')
+    const [search, setSearch] = useState("pikachu")
 
     const getPokemons = async (search) => {
-        await fetch("https://pokeapi.co/api/v2/pokemon/pikachu")
+        console.log(search)
+        await fetch(`https://pokeapi.co/api/v2/pokemon/${search}`)
         .then(response => response.json())
         .then(data => {
-            console.log("Solicitud exitosa", data);
+            console.log(data);
             
             const pokemonData = [];
             data.forEach(pokemon => {
@@ -28,7 +29,7 @@ export const PokemonList = () => {
 
     getPokemons();
     useEffect(() => {
-        
+        getPokemons(search)
     }, [search])
     
 
