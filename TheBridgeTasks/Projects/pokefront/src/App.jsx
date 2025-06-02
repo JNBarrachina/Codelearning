@@ -4,8 +4,8 @@ import './App.css'
 
 import { Header } from './components/Header'
 import { Home } from './components/Home'
-import { PokemonList } from './components/PokemonList'
 import { NotFound } from './components/NotFound'
+import { TypeSelector } from './components/TypeSelector'
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
             <Header />
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/pokemon" element={<PokemonList />} />
+                <Route path="/pokemon" element={<TypeSelector />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
       </BrowserRouter>

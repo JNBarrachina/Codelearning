@@ -1,51 +1,47 @@
 import { useState, useEffect } from 'react'
 
-export const PokemonList = () => {
+export const PokemonList = (selectedType) => {
 
     const [pokelist, setPokelist] = useState([])
-    const [search, setSearch] = useState("pikachu")
 
-    const getPokemons = async (search) => {
-        console.log(search)
-        await fetch(`https://pokeapi.co/api/v2/pokemon/${search}`)
+    useEffect(() => {
+        console.log(selectedType);
+
+        const getPokemons = async () => {
+        await fetch(`https://pokeapi.co/api/v2/type/${selectedType.selectedType}`)
         .then(response => response.json())
-        .then(data => {
-            console.log(data);
+        .then(data => {          
+            const pokemonData = data.pokemon
             
-            const pokemonData = [];
-            data.forEach(pokemon => {
-                pokemonData.push({
-                    name: pokemon.name,
-                })
+            pokemonData.forEach(pokemon => {
+                singlePokemonInfo(pokemon)
             });
+        })
+        }
 
-            setPokelist(pokemonData)
+        getPokemons();
+    }
+    , [selectedType])
+
+    const singlePokemonInfo = async (pokemon) => {
+        await fetch(`${pokemon.pokemon.url}`)
+        .then(response => response.json())
+        .then(pokemonInfo => {
+
+            pokelist.push({name: pokemonInfo.name, img: pokemonInfo.sprites.front_default})
         })
     }
 
-    const handleSearch = (event) => {
-        setSearch(event.target.value)
-    }
-
-    getPokemons();
-    useEffect(() => {
-        getPokemons(search)
-    }, [search])
-    
-
     return (
-        
-            <main>
-                <h1>Pokemons</h1>
-                <input className='searchPokemon' type="text" placeholder="Buscar pokemon" onChange={handleSearch}/>
+            <section>
                 {
                     pokelist.map(pokemon => 
                         <article className='memberBox'>
-                            <h2>{pokemon.name}</h2>
+                            <h3>{pokemon.name}</h3>
+                            <img src={pokemon.img} alt="" />
                         </article>
                     )
                 }
-            </main>
-    
+            </section>
     )
 }
