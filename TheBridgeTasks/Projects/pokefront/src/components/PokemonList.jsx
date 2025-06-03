@@ -1,45 +1,55 @@
 import { useState, useEffect } from 'react'
 
-export const PokemonList = (selectedType) => {
+import { Pokemon } from './Pokemon'
+import "./PokemonList.scss"
+
+export const PokemonList = ({pokemonType}) => {
 
     const [pokelist, setPokelist] = useState([])
 
     useEffect(() => {
-        console.log(selectedType);
-
+        console.log("use effect", pokemonType);
+        setPokelist([])
         const getPokemons = async () => {
-        await fetch(`https://pokeapi.co/api/v2/type/${selectedType.selectedType}`)
+            console.log("previo al fetchs")
+        await fetch(`https://pokeapi.co/api/v2/type/${pokemonType}`)
         .then(response => response.json())
         .then(data => {          
             const pokemonData = data.pokemon
             
+            // const newPokeList = []
+
             pokemonData.forEach(pokemon => {
                 singlePokemonInfo(pokemon)
             });
+
+            //setPokelist(pokelist)
+            console.log("Pokelist actualizada: ", pokelist)
         })
+        
         }
 
         getPokemons();
     }
-    , [selectedType])
+    , [pokemonType])
 
-    const singlePokemonInfo = async (pokemon) => {
+    const singlePokemonInfo = async (pokemon, newPokeList) => {
         await fetch(`${pokemon.pokemon.url}`)
         .then(response => response.json())
         .then(pokemonInfo => {
 
-            pokelist.push({name: pokemonInfo.name, img: pokemonInfo.sprites.front_default})
+            setPokelist((prevPokelist) => [...prevPokelist, {name: pokemonInfo.name, img: pokemonInfo.sprites.front_default}])
+            
+
+            // pokelist.push({name: pokemonInfo.name, img: pokemonInfo.sprites.front_default})
         })
     }
 
     return (
-            <section>
+            <section className='pokemonListBox'>
                 {
                     pokelist.map(pokemon => 
-                        <article className='memberBox'>
-                            <h3>{pokemon.name}</h3>
-                            <img src={pokemon.img} alt="" />
-                        </article>
+                        <Pokemon name={pokemon.name} img={pokemon.img} key={pokemon.name}/>
                     )
                 }
             </section>

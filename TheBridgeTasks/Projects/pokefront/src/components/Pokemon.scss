@@ -1,0 +1,33 @@
+$pokemon-card-width: 200px;
+$pokemon-card-bg: rgb(51, 51, 51);
+
+.pokemonBox{
+    width: $pokemon-card-width;
+
+    flex-grow: 1;
+
+    padding: 1rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: $pokemon-card-bg;
+    border: 2px solid whitesmoke;
+    border-radius: 0.4rem;
+}
+
+.pokemonBox:hover{
+    transform: scale(1.05);
+    transition: 0.6s;
+}
+
+.pokemonName{
+    font-family:'Courier New', Courier, monospace;
+    font-weight: bolder;
+    color: white;
+}
+
+.pokeImg{
+    height: 140px;
+}

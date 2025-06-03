@@ -5,11 +5,8 @@ export const Header = () => {
         <header className="mainHeader">
             <p className="headerTitle">PokeFrontAPI</p>
             <nav className="headerNav">
-                {/* <Link to="/">Inicio</Link>
-                <Link to="/count">Contador</Link>
-                <Link to="/pass">PassVerifier</Link>
-                <Link to="/team">Team</Link>
-                <Link to="/register">Register</Link> */}
+                <Link to="/">Inicio</Link>
+                <Link to="/pokemon">Pokemons</Link>
             </nav>
         </header>
     )

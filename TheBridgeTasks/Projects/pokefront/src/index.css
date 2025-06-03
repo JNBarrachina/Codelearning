@@ -30,6 +30,14 @@ body {
   min-height: 100vh;
 }
 
+main {
+  display: flex;
+  flex-flow: column wrap;
+
+  gap: 2rem;
+  padding: 2rem;
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
@@ -46,9 +54,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
