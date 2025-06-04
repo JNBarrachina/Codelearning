@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-import { Pokemon } from './Pokemon'
+import { CharacterItem } from '../molecules/CharacterItem'
 import "./PokemonList.scss"
 
 export const PokemonList = ({pokemonType}) => {
@@ -8,25 +8,18 @@ export const PokemonList = ({pokemonType}) => {
     const [pokelist, setPokelist] = useState([])
 
     useEffect(() => {
-        console.log("use effect", pokemonType);
+
         setPokelist([])
         const getPokemons = async () => {
-            console.log("previo al fetchs")
-        await fetch(`https://pokeapi.co/api/v2/type/${pokemonType}`)
-        .then(response => response.json())
-        .then(data => {          
-            const pokemonData = data.pokemon
+            await fetch(`https://pokeapi.co/api/v2/type/${pokemonType}`)
+            .then(response => response.json())
+            .then(data => {          
+                const pokemonData = data.pokemon
             
-            // const newPokeList = []
-
-            pokemonData.forEach(pokemon => {
-                singlePokemonInfo(pokemon)
-            });
-
-            //setPokelist(pokelist)
-            console.log("Pokelist actualizada: ", pokelist)
-        })
-        
+                pokemonData.forEach(pokemon => {
+                    singlePokemonInfo(pokemon)
+                });
+            })
         }
 
         getPokemons();
@@ -40,8 +33,6 @@ export const PokemonList = ({pokemonType}) => {
 
             setPokelist((prevPokelist) => [...prevPokelist, {name: pokemonInfo.name, img: pokemonInfo.sprites.front_default}])
             
-
-            // pokelist.push({name: pokemonInfo.name, img: pokemonInfo.sprites.front_default})
         })
     }
 
@@ -49,7 +40,7 @@ export const PokemonList = ({pokemonType}) => {
             <section className='pokemonListBox'>
                 {
                     pokelist.map(pokemon => 
-                        <Pokemon name={pokemon.name} img={pokemon.img} key={pokemon.name}/>
+                        <CharacterItem name={pokemon.name} img={pokemon.img} key={pokemon.name}/>
                     )
                 }
             </section>

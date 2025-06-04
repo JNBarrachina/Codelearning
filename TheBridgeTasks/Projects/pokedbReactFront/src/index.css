@@ -24,18 +24,9 @@ a:hover {
 
 body {
   margin: 0;
+  
   display: flex;
   place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-main {
-  display: flex;
-  flex-flow: column wrap;
-
-  gap: 2rem;
-  padding: 2rem;
 }
 
 h1 {
@@ -75,4 +66,20 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.rightContainer, .leftContainer {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 40%;
+
+  gap: 2rem;
+  padding: 2rem;
+}
+
+h2{
+  align-self: center;
 }

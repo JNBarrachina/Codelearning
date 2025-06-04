@@ -1,0 +1,22 @@
+.mainHeader{
+    width: 100%;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.headerTitle{
+    font-size: 2rem;
+}
+
+.headerNav{
+    display: flex;
+    gap: 1rem;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}

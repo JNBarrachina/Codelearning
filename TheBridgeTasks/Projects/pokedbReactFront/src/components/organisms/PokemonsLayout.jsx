@@ -2,15 +2,12 @@ import { useState, useEffect} from 'react';
 
 import { PokemonList } from './PokemonList';
 
-export const TypeSelector = () => {
+export const PokemonsLayout = () => {
     const [types, setTypes] = useState([])
     const [selectedType, setSelectedType] = useState("normal")
 
     useEffect(() => {
-        console.log("Se muestran los tipos al montar el componente: ", types)
-
         if (types.length == 0){
-            console.log("Recuperando los tipos de Pokemon...")
 
             const getTypes = async () => {
             await fetch('https://pokeapi.co/api/v2/type')
@@ -18,7 +15,6 @@ export const TypeSelector = () => {
             .then(data => {
 
                 const typeList = data.results
-                console.log(typeList);
                 setTypes(typeList);
             })
             .catch(error => console.error('Error fetching types:', error));
@@ -35,8 +31,9 @@ export const TypeSelector = () => {
     }
 
     return (
-        <main>
+        <>
         <section className="typeSelectorBox">
+            <h2>Pokemons</h2>
             <label htmlFor="typeSelectorLabel">Selecciona un tipo de Pokemon: </label>
             <select id="typeSelector" value={selectedType} onChange={handleTypeChange}>
             <option value="">--Selecciona un tipo de Pokemon--</option>
@@ -47,7 +44,7 @@ export const TypeSelector = () => {
             ))}
             </select>
         </section>
-            <PokemonList pokemonType={selectedType} />
-        </main>
+        <PokemonList pokemonType={selectedType} />
+        </>
     );
 }

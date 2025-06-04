@@ -1,0 +1,11 @@
+.mainLayout{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.mainTitle{
+    width: 100%;
+    font-size: 2.2rem;
+}
