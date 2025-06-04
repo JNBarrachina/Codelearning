@@ -1,9 +1,15 @@
 import "./MainLayout.scss"
 
+import { useContext } from 'react'
+import { ThemeContext } from '../../contexts/ThemeContext'
+
 export const MainLayout = ({leftContent, rightContent}) => {
+    
+    const {theme, setTheme} = useContext(ThemeContext)
+    
     return (
-        <main className="mainLayout">
-            <h1 className="mainTitle">Characters</h1>
+        <main className={theme == "dark" ? "mainLayout mainLayout-dark" : "mainLayout mainLayout-light"}>
+            <h1 className={theme == "dark" ? "mainTitle mainTitle-dark" : "mainTitle mainTitle-light"}>Characters</h1>
             <article className="leftContainer">
                 {leftContent}
             </article>

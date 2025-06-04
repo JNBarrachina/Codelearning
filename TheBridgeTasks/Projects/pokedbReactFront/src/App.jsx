@@ -1,7 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import './App.css'
-
 import { ThemeContext } from './contexts/ThemeContext'
 
 import { Header } from './components/organisms/Header'
@@ -18,7 +16,7 @@ function App() {
 
   return (
     <>
-      <ThemeContext.Provider value={{theme}}>
+      <ThemeContext.Provider value={{theme, setTheme}}>
       <BrowserRouter>
             <Header />
             <Routes>

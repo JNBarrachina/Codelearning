@@ -1,5 +1,4 @@
 $pokemon-card-width: 200px;
-$pokemon-card-bg: rgb(51, 51, 51);
 
 .characterBox{
     width: $pokemon-card-width;
@@ -8,13 +7,12 @@ $pokemon-card-bg: rgb(51, 51, 51);
     flex-grow: 1;
 
     padding: 1rem;
+    gap: 1rem;
 
     display: flex;
     justify-content: center;
     align-items: center;
     
-    background-color: $pokemon-card-bg;
-    border: 2px solid whitesmoke;
     border-radius: 0.4rem;
 }
 
@@ -23,10 +21,27 @@ $pokemon-card-bg: rgb(51, 51, 51);
     transition: 0.6s;
 }
 
+.characterBox-dark{
+    background-color: rgb(56, 56, 56);
+    transition: 0.3s;
+}
+
+.characterBox-light{
+    background-color: whitesmoke;
+    transition: 0.3s;
+}
+
 .characterName{
     font-family:'Courier New', Courier, monospace;
     font-weight: bolder;
+}
+
+.characterName-dark{
     color: white;
+}
+
+.characterName-light{
+    color: black;
 }
 
 .characterImg{

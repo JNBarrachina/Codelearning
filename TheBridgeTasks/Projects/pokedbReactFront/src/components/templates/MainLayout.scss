@@ -5,7 +5,17 @@
     align-items: flex-start;
 }
 
+.mainLayout-dark{
+    background-color: black;
+}
+
 .mainTitle{
     width: 100%;
-    font-size: 2.2rem;
+
+    text-align: center;
+    font-size: 2rem;
+}
+
+.mainTitle-dark{
+    color: white;
 }

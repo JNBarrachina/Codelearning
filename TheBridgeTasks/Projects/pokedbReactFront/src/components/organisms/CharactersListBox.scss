@@ -1,0 +1,23 @@
+
+.charactersListBox{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: center;
+
+    gap: 1rem;
+}
+
+.titleCharacters{
+    text-align: center;
+    font-size: 1.4rem;
+
+}
+
+.titleCharacters-dark{
+    color: white;
+}
+
+.titleCharacters-light{
+    
+}

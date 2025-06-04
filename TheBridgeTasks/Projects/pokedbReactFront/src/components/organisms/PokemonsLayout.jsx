@@ -1,10 +1,14 @@
-import { useState, useEffect} from 'react';
+import { useState, useEffect, useContext} from 'react';
+import { ThemeContext } from '../../contexts/ThemeContext';
 
 import { PokemonList } from './PokemonList';
+import "./CharactersListBox.scss"
 
 export const PokemonsLayout = () => {
     const [types, setTypes] = useState([])
     const [selectedType, setSelectedType] = useState("normal")
+
+    const {theme, setTheme} = useContext(ThemeContext)
 
     useEffect(() => {
         if (types.length == 0){
@@ -33,7 +37,7 @@ export const PokemonsLayout = () => {
     return (
         <>
         <section className="typeSelectorBox">
-            <h2>Pokemons</h2>
+            <h2 className={theme == "dark" ? "titleCharacters titleCharacters-dark" : "titleCharacters titleCharacters-light"}>Pokemons</h2>
             <label htmlFor="typeSelectorLabel">Selecciona un tipo de Pokemon: </label>
             <select id="typeSelector" value={selectedType} onChange={handleTypeChange}>
             <option value="">--Selecciona un tipo de Pokemon--</option>

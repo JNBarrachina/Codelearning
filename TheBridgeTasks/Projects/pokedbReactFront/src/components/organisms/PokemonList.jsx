@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
 import { CharacterItem } from '../molecules/CharacterItem'
-import "./PokemonList.scss"
+import "./CharactersListBox.scss"
 
 export const PokemonList = ({pokemonType}) => {
 
@@ -37,7 +37,7 @@ export const PokemonList = ({pokemonType}) => {
     }
 
     return (
-            <section className='pokemonListBox'>
+            <section className='charactersListBox'>
                 {
                     pokelist.map(pokemon => 
                         <CharacterItem name={pokemon.name} img={pokemon.img} key={pokemon.name}/>
