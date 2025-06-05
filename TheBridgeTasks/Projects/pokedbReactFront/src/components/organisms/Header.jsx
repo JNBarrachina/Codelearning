@@ -30,7 +30,7 @@ export const Header = () => {
                 <Link to="/">Home</Link>
                 <Link to="/characters">Characters</Link>
             </nav>
-            <button className={theme=="dark" ? "themeBtn themeBtn-dark" : "themeBtn themeBtn-light"} onClick={() => changeTheme()}>{textThemeBtn}</button>
+            <button className={theme=="dark" ? "themeBtn themeBtn-dark" : "themeBtn themeBtn-light"} onClick={() => changeTheme()}>{theme == "dark" ? "🌛" : "🌞" }</button>
         </header>
         </>
     )

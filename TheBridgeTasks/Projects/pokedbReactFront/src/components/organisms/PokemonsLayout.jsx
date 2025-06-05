@@ -38,7 +38,7 @@ export const PokemonsLayout = () => {
         <>
         <section className="typeSelectorBox">
             <h2 className={theme == "dark" ? "titleCharacters titleCharacters-dark" : "titleCharacters titleCharacters-light"}>Pokemons</h2>
-            <label htmlFor="typeSelectorLabel">Selecciona un tipo de Pokemon: </label>
+            <label htmlFor="typeSelectorLabel" className={theme == "dark" ? "labelSelect labelSelect-dark" : "labelSelect labelSelect-light"}>Selecciona un tipo de Pokemon: </label>
             <select id="typeSelector" value={selectedType} onChange={handleTypeChange}>
             <option value="">--Selecciona un tipo de Pokemon--</option>
             {types.map((type) => (
