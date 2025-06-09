@@ -3,8 +3,9 @@ const {Ingredient} = require("../models/Ingredient");
 const getIngredients = async (req, res) => {
     // #swagger.tags = ['Ingredients']
 
-    const foundedIngredient = await Ingredient.find({userId: req.body.id});
-    res.send(foundedIngredient);
+    const foundedIngredients = await Ingredient.find({userId: req.user._id});
+    const userIngredients = foundedIngredients.map(ingredient => ({name: ingredient.name, quantity: ingredient.quantity}));
+    res.send(userIngredients);
 }
 
 const addIngredient = async (req, res) => {

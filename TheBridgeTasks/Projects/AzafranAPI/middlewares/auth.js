@@ -1,4 +1,4 @@
-const User = require("../models/User");
+const {User} = require("../models/User");
 
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../config/config") ;
@@ -24,12 +24,11 @@ const authMiddleware = async (req, res, next) => {
 
   // Obtener el userId del payload
     const userId = payload.userId;
-    console.log(userId);
 
   // Prevenir edge case: Find de ese user by userId
-    const user = await User.findById(userId);
+    const user = await User.findOne({_id: userId});
     if (!user) {
-        res.status(401).send("Invalid user"); // EDGE CASE
+        res.status(401); // EDGE CASE
         return;
     }
 

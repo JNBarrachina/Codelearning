@@ -29,15 +29,14 @@ export const Register = () => {
                 country: country
             })
         })
-        .then(response => response.json())
         .then(res => {   
             if (res.ok){
-                console.log(res);
+                console.log(res.statusText);
                 
                 navigate("/login")
             }
             else{
-                console.log(res)
+                console.log(res.statusText);
             }
         })
     }

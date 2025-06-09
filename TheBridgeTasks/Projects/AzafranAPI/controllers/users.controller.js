@@ -13,13 +13,13 @@ const loginUser = async (req, res) => {
         {username: username}
     );
     if (!existingUser){
-        res.status(400).send("El usuario no existe");
+        res.status(400).send({msg: "Usuario o contraseña incorrectos"});
         return;
     }
 
     const passwordMatch = bcryptjs.compareSync(password, existingUser.password);
     if (!passwordMatch){
-        res.status(400).send("Contraseña incorrecta");
+        res.status(400).send({msg: "Usuario y contraaseña incorrectos"});
         return;
     }
     else{
@@ -39,7 +39,7 @@ const registerUser = async (req, res) => {
         {username: username}
     );
     if (checkUsername){
-        res.status(400).send("El nombre de usuario ya está siendo utilizado");
+        res.status(400).send({msg: "El nombre de usuario ya está siendo utilizado"});
         return;
     }
 
@@ -55,10 +55,10 @@ const registerUser = async (req, res) => {
         )
 
         await createdMember.save();
-        res.status(201).send("Usuario registrado");
+        res.status(204).send({msg: "Usuario registrado"});
     } catch (error) {
         console.log(error);
-        res.status(400).send("Unexpected error");
+        res.status(400).send({msg: "Unexpected error"});
     }
 }
 
