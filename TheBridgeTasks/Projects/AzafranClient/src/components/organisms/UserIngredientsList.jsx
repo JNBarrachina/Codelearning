@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react"
 
-export const IngredientsList = () => {
+import { Ingredient } from "../molecules/Ingredient"
+
+export const UserIngredientsList = () => {
     const [ingredientsList, setIngredientsList] = useState([])
+    const [recipeIngredients, setRecipeIngredients] = useState([])
 
     const getUserIngredients = async () => {
         fetch("http://localhost:8080/ingredients", {
@@ -18,18 +21,26 @@ export const IngredientsList = () => {
         })
     }
 
+    const saveRecipeIngredients = async (ingredient) => {
+        setRecipeIngredients(...recipeIngredients, ingredient)
+        console.log(recipeIngredients)
+    }
+
     useEffect(() => {
         getUserIngredients()
     }, [])
     
     return (
         <>
+        <section className="ingredientsListBox">
         <h2>Tus ingredientes</h2>
-        <section>
-            {ingredientsList.map((ingredient, index) => {
-                return <p key={index}>{ingredient.name}: {ingredient.quantity}</p>
-            })}
-        </section>
+            <form action="">
+                {ingredientsList.map((ingredient, index) => {
+                    return <Ingredient ingredient={ingredient} />
+                })}
+            </form>
+            <button > Generar recetas </button>
+            </section>
         </>
     )
 }

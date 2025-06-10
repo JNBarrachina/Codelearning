@@ -32,7 +32,7 @@ export const Login = () => {
             else{
                 setLoginmessage("Login...")
                 localStorage.setItem("accessToken", data.accessToken)
-                navigate("/userpantry")
+                navigate("/dashboard")
             }
         }) 
     }

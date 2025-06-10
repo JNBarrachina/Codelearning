@@ -5,7 +5,7 @@ import { Header } from './components/organisms/Header'
 import { Home } from './components/pages/Home'
 import { Login } from './components/pages/Login'
 import { Register } from './components/pages/Register'
-import { PantryLayout } from './components/pages/PantryLayout'
+import { UserDashboard } from './components/pages/UserDashboard'
 import { NotFound } from "./components/pages/NotFound"
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
-                <Route path="/userpantry" element={<PantryLayout />} />
+                <Route path="/dashboard" element={<UserDashboard />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
       </BrowserRouter>

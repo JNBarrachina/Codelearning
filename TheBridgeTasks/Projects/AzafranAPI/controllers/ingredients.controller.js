@@ -4,7 +4,12 @@ const getIngredients = async (req, res) => {
     // #swagger.tags = ['Ingredients']
 
     const foundedIngredients = await Ingredient.find({userId: req.user._id});
-    const userIngredients = foundedIngredients.map(ingredient => ({name: ingredient.name, quantity: ingredient.quantity}));
+    const userIngredients = foundedIngredients.map(ingredient => ({
+        id: ingredient._id,
+        name: ingredient.name, 
+        quantity: ingredient.quantity
+    }));
+
     res.send(userIngredients);
 }
 
@@ -14,9 +19,10 @@ const addIngredient = async (req, res) => {
     try {
         const newIngredient = new Ingredient({...req.body, userId: req.user._id});
         await newIngredient.save();
-        res.send(newIngredient);
+
+        res.status(201);
     } catch (error) {
-        res.status(500).send("Hubo un error")
+        res.status(500).send("Unexpected error")
     }
 }
 
