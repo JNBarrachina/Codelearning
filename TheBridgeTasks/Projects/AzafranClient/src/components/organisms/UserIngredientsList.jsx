@@ -35,7 +35,7 @@ export const UserIngredientsList = () => {
         <section className="ingredientsListBox">
         <h2>Tus ingredientes</h2>
             <form action="">
-                {ingredientsList.map((ingredient, index) => {
+                {ingredientsList.length == 0 ? "No tienes ingredientes en tu despensa" : ingredientsList.map((ingredient, index) => {
                     return <Ingredient ingredient={ingredient} />
                 })}
             </form>
