@@ -2,7 +2,6 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router";
 import { Button, Input } from "antd"
 
-
 export const Login = () => {
 
     const navigate = useNavigate()
@@ -32,7 +31,7 @@ export const Login = () => {
             else{
                 setLoginmessage("Login...")
                 localStorage.setItem("accessToken", data.accessToken)
-                navigate("/dashboard")
+                window.location.href = "/dashboard"
             }
         }) 
     }

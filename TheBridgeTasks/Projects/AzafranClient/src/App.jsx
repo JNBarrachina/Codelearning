@@ -1,26 +1,18 @@
-import { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router'
 
 import { Header } from './components/organisms/Header'
-import { Home } from './components/pages/Home'
-import { Login } from './components/pages/Login'
-import { Register } from './components/pages/Register'
-import { UserDashboard } from './components/pages/UserDashboard'
-import { NotFound } from "./components/pages/NotFound"
+import { UnauthedRoutes } from './routes/UnauthedRoutes'
+import { AuthedRoutes } from './routes/AuthedRoutes'
 
 function App() {
+
+  const userLogged = localStorage.getItem("accessToken")
 
   return (
     <>
       <BrowserRouter>
-            <Header />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/dashboard" element={<UserDashboard />} />
-                <Route path="*" element={<NotFound />} />
-            </Routes>
+          <Header />
+          {!userLogged ? <UnauthedRoutes /> : <AuthedRoutes />}
       </BrowserRouter>
     </>
   )

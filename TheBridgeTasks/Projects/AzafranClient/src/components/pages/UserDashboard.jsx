@@ -1,20 +1,7 @@
-import { useEffect } from "react"
-import { useNavigate } from "react-router"
-
 import { UserIngredientsList } from "../organisms/UserIngredientsList"
 import { AddIngredient } from "../organisms/AddIngredient"
 
 export const UserDashboard = () => {
-    let navigate = useNavigate()
-
-    useEffect(() => {    
-        if (!localStorage.getItem("accessToken")){
-            navigate("/login")
-        }
-
-    }, [])
-    
-
     return (
         <main>
             <article className="dashboardContainer">

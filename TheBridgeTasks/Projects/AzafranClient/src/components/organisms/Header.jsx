@@ -1,32 +1,23 @@
-import { Link } from 'react-router-dom'
+import { useState, useEffect, setState} from 'react'
 
 import "./Header.scss"
+import { MainNav } from '../molecules/MainNav'
+import { UserNav } from '../molecules/UserNav'
 
-import { useContext, useEffect } from 'react'
-import { useState } from 'react'
 
 export const Header = () => {
-    const [headerLink, setHeaderLink] = useState()
     const userLogged = localStorage.getItem("accessToken")
+    const [headerNav, setHeaderNav] = useState()
 
     useEffect(() => {
-        if (userLogged){
-            setHeaderLink(<Link to="/dashboard">Tu despensa</Link>)
-        }
-        else{
-            setHeaderLink(<Link to="/login">Login</Link>)
-        }
+        !userLogged ? setHeaderNav(<MainNav />) : setHeaderNav(<UserNav />)
     }, [])
-    
+
     return (
         <>
         <header className="headerContainer">
             <p className="headerTitle">Azafrán</p>
-            <nav className="headerNav">
-                <Link to="/">Home</Link>
-                {headerLink}
-                <Link to="/register">Register</Link>
-            </nav>
+            {headerNav}
         </header>
         </>
     )
