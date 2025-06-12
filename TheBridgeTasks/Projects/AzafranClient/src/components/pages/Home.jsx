@@ -1,6 +1,8 @@
 
 export const Home = () => {
     return (
-        <h1>Welcome</h1>
+        <main>
+            <h1>¡Welcome to Azafrán, Food Lover!</h1>
+        </main>
     )
 }
