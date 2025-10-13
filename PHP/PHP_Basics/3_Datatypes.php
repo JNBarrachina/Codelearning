@@ -79,4 +79,9 @@ print_r($myFullData);
 arsort($myFullData); //ordenar un array asociativo en orden inverso
 print_r($myFullData);
 
+array_keys($myFullData); //obtener las claves de un array asociativo
+array_values($myFullData); //obtener los valores de un array asociativo
+sizeof($myFullData); //obtener el tamaño de un array
+count($myFullData); //obtener el número de elementos de un array
+
 ?>
