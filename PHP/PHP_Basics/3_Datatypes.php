@@ -1,6 +1,8 @@
 <?php
 
-//Tipos de datos primitivos
+//*TIPOS DE DATOS
+
+//*Tipos de datos PRIMITIVOS
 
 $age = 20;  //int o integer
 $pi = 3.1416; //float
@@ -8,27 +10,27 @@ $name = "John"; //string
 $hasKids = true; //bool
 
 
-//Tipos de datos especiales
+//*Tipos de datos ESPECIALES
 
 $number = null; //null
 //$article?->title; //nullsafe
 $resource = fopen("testtext.txt", "r"); //resource
 echo $resource;
 
-//Tipado: asignar un tipo a una variable (asignación forzada o casting)
+//*Tipado: asignar un tipo a una variable (asignación forzada o casting)
 $myage = (int) 80;
 $myfloat = (float) 3.1416;
 $myname = (string) "John";
 $mybool = (bool) true;
 
-//Conversión de tipos con funciones
+//*Conversión de tipos con funciones
 $myage = intval(80);
 $myfloat = floatval(3.1416);
 $myname = strval("John");
 $mybool = boolval(true);
 
 
-//Tipos de datos compuestos (ARRAY, OBJECT, ENUM)
+//*Tipos de datos COMPUESTOS (ARRAY, OBJECT, ENUM)
 
 //ARRAY NUMÉRICO
 $myArray = [1, 2, 3, 4, 5];

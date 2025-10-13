@@ -1,6 +1,6 @@
 <?php
 
-//Funciones matemáticas avanzadas
+//*FUNCIONES MATEMÁTICAS
 
 $mynum = 9;
 $myfloat = 3.1416;

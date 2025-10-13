@@ -1,5 +1,6 @@
 <?php
-//Manejo de ficheros
+
+//*MANEJO DE FICHEROS
 
 //file_exists() //Comprobar si un fichero existe
 $checkFile = file_exists("testtext.txt");
@@ -18,6 +19,9 @@ require("testtext.txt");
 
 //Include //Incluir un fichero, si el fichero no existe continua el script
 include("testtext.txt");
+
+
+//* PHP DATA
 
 //var_export() //Exportar variables
 $arrayTest = [

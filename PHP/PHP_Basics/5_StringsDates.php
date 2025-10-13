@@ -1,6 +1,6 @@
 <?php
 
-//STRINGS
+//*STRINGS
 
 $myString1 = "Hello World";
 $myString2 = 'Learning PHP';
@@ -13,7 +13,7 @@ $myString3 = <<<EOT
 EOT;
 echo $myString3;
 
-//STRING FUNCTIONS
+//*STRING FUNCTIONS
 $paragraph = htmlentities('<p>This is a paragraph</p>');
 echo $paragraph . "\n";
 $paragraph = html_entity_decode($paragraph);
@@ -51,7 +51,8 @@ echo hash("sha256", $myString1); //Encriptar una cadena con un algoritmo de encr
 echo crypt($myString1, "salt") . "\n"; //Encriptar una cadena con un salt
 
 
-//FECHAS
+//*DATES
+
 $myDate = date("Y-m-d H:i:s");
 echo mktime(0, 0, 0, 1, 1, 2000) . "\n"; //Crear una fecha ()
 echo time(); //Obtener la fecha actual en segundos
