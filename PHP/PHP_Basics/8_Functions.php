@@ -57,4 +57,9 @@ $sumClosure = function (int $a, int $b) use ($sum): int {
 
 echo $sumClosure(10, 23) . "\n";
 
+//*Arrow functions
+
+$sum = fn (int $a, int $b): int => $a + $b;
+echo $sum(10, 23) . "\n";
+
 ?>
