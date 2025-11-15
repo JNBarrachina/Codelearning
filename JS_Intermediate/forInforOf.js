@@ -1,4 +1,4 @@
-//For in; For of
+//? For in; For of
 
 let myObject = {
     name: "John",
