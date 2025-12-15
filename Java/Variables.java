@@ -2,9 +2,9 @@
 // Comentario de una línea
 /** Comentario de documentación */
 
-import java.util.Scanner; // Importamos la clase Scanner
-
 // ? VARIABLES
+
+import java.util.Scanner; // Importamos la clase Scanner
 
 public class Variables {
 
@@ -12,14 +12,16 @@ public class Variables {
         {
             Scanner read = new Scanner(System.in); // Scanner: lectura de datos
 
-            // * Declaración: tipo + nombre
+            // * Declaración: dataypeo + name
 
             int a = 10;
             System.out.printf("Entero: %d\n", a);
             float b = 3.14f;
             System.out.printf("Flotante: %f\n", b);
-            char c = 'A';
-            System.out.printf("Caracter: %c\n", c);
+            double c = 3.14;
+            System.out.printf("Doble: %f\n", c);
+            char singleChar = 'A';
+            System.out.printf("Caracter: %c\n", singleChar);
             String d = "Hola";
             System.out.printf("Cadena: %s\n", d);
             boolean e = true;
