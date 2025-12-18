@@ -1,5 +1,6 @@
 //? ESTRUCTURAS DE DATOS
 
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -7,31 +8,41 @@ import java.util.HashSet;
 public class DataStructures {
     public static void main(String[] args) {
         arrays();
-        lists();
+        arraylist();
         sets();
         maps();
     }
 
     // * Arrays
     static void arrays() {
-        // Creación de un array
+        // Declaración e instanciado de un array y un ArrayList
+        int[] numsArray = { 2, 1, 5, 4, 3 };
         String[] namesArray = new String[5];
-        int[] numsArray = { 1, 2, 3, 4, 5 };
 
-        System.out.println(namesArray[0]); // null
+        // Length
+        System.out.println(namesArray.length); // 5
+
+        // Sort
+        System.out.println(Arrays.toString(numsArray)); // Arrays.method: utilidades para arrays
+        Arrays.sort(numsArray); // Array sorting
+        System.out.println(Arrays.toString(numsArray));
+
+        // Buscar un elemento del array
         System.out.println(numsArray[0]); // 1
+        System.out.println(Arrays.binarySearch(numsArray, 1)); // Búsqueda ultrarápida: retorna el index del valor
+                                                               // buscado
+        System.out.println(namesArray[0]); // null: Existe el elemento, pero no tiene valor
 
         // Modificación de un array
         namesArray[0] = "Juancho";
-        System.out.println(namesArray[0]); // Juancho
+        Arrays.fill(namesArray, 1, 5, "Juanchi"); // Llenar un array con un valor indicado
+        System.out.println(Arrays.toString(namesArray));
         // namesArray[1] = 1; Error de compilación: tipo incorrecto.
 
-        // Lenght
-        System.out.println(namesArray.length); // 5
     }
 
-    // * Listas
-    static void lists() {
+    // * ArrayList
+    static void arraylist() {
         // ArrayList: listas dinámicas
         var numsList = new ArrayList<Integer>();
         ArrayList<String> namesList = new ArrayList<>();
