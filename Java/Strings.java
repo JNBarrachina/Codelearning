@@ -29,10 +29,12 @@ public class Strings {
         // contains
         System.out.println(stringLiteral.contains("ll")); // true
 
-        // equals
+        // comparación
+        // !CUIDAOO!; == : comparación de referencia de memoria
+        System.out.println(stringLiteral == stringObject);
+        // ? equals: comparación de contenido (BUENA PRACTICA).
         System.out.println(stringLiteral.equals(stringObject)); // false
-        // !CUIDAOO; == : comparación de referencia de memoria, mientras que equals :
-        // comparación de contenido (BUENA PRACTICA).
+        System.out.println(stringLiteral.equalsIgnoreCase(stringObject));
 
         // trim: elimina espacios en blanco
         System.out.println(stringLiteral.trim());

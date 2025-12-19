@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
 
 public class DataStructures {
     public static void main(String[] args) {
@@ -11,10 +14,14 @@ public class DataStructures {
         arraylist();
         sets();
         maps();
+        queue();
+        stack();
     }
 
     // * Arrays
     static void arrays() {
+        // * Arrays
+
         // Declaración e instanciado de un array y un ArrayList
         int[] numsArray = { 2, 1, 5, 4, 3 };
         String[] namesArray = new String[5];
@@ -43,7 +50,8 @@ public class DataStructures {
 
     // * ArrayList
     static void arraylist() {
-        // ArrayList: listas dinámicas
+        // * ArrayList: listas dinámicas
+
         var numsList = new ArrayList<Integer>();
         ArrayList<String> namesList = new ArrayList<>();
 
@@ -76,7 +84,8 @@ public class DataStructures {
 
     // * Sets
     static void sets() {
-        // Conjuntos: colecciones sin duplicados
+        // * Sets: colecciones sin duplicados
+
         HashSet<Integer> numsSet = new HashSet<>();
         var namesSet = new HashSet<String>();
 
@@ -102,7 +111,8 @@ public class DataStructures {
 
     // * Maps
     static void maps() {
-        // Mapas: colecciones de pares clave-valor
+        // * Mapas: colecciones de pares clave-valor
+
         HashMap<String, Integer> mapNameTlf = new HashMap<>();
         var mapNameEmail = new HashMap<String, String>();
 
@@ -128,5 +138,39 @@ public class DataStructures {
 
         // Limpiar
         mapNameTlf.clear();
+    }
+
+    static void queue() {
+        // * Queues: FIFO (First in, First Out)
+
+        Queue<String> myQueue = new LinkedList<>();
+
+        // Add
+        myQueue.add("Juan");
+        myQueue.add("Marcos");
+        myQueue.add("Carlos");
+        myQueue.add("Alberto");
+
+        // Peek: devuelve el primer elemento de la cola (element: exception if empty)
+        System.out.println(myQueue.peek());
+
+        // Poll: devuelve y elimina el primer elemento de la cola (remove: exception if
+        // empty)
+        System.out.println(myQueue.poll());
+
+    }
+
+    static void stack() {
+        // * Stacks: LIFO (Last in, First out)
+
+        Stack<Integer> myStack = new Stack<>();
+
+        myStack.add(12);
+        myStack.add(34);
+        myStack.add(120);
+
+        System.out.println(myStack.peek());
+        System.out.println(myStack.pop());
+
     }
 }

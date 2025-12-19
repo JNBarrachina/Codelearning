@@ -1,9 +1,9 @@
 //? FUNCIONES
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Functions {
-
     public static void main(String[] args) {
         Scanner read = new Scanner(System.in);
 
@@ -33,6 +33,19 @@ public class Functions {
             default:
                 System.out.println("Operación no reconocida");
         }
+
+        // * Parámetros por valor y por referencia
+
+        int varExterna = 10;
+        valueParams(varExterna);
+        System.out.println("Valor de la variable externa (se mantiene): " + varExterna);
+
+        var arrayExterno = new ArrayList<Integer>();
+        arrayExterno.add(1);
+        System.out.println("Valor del arrayList antes (desde main): " + arrayExterno);
+        referParams(arrayExterno);
+        System.out.println("Valor del arrayList después (desde main): " + arrayExterno);
+
     }
 
     public static int add(int a, int b) { // Función con retorno
@@ -49,5 +62,19 @@ public class Functions {
 
     public static int div(int a, int b) {
         return a / b;
+    }
+
+    // * Parámetros por valor (PARA TIPOS PRIMITIVOS):
+
+    public static void valueParams(int varExterna) {
+        varExterna *= 2;
+        System.out.println("Variable externa modificada: " + varExterna); // Modificada en el ámbito de la función
+    }
+
+    // * Parámetros por referencia (PARA TIPOS COMPLEJOS: array, arraylist...)
+
+    public static void referParams(ArrayList arrayExterno) {
+        arrayExterno.add(2);
+        System.out.println("Valor de arrayList modificado desde una función (ámbito local): " + arrayExterno);
     }
 }
