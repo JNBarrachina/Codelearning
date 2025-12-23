@@ -36,7 +36,7 @@ public class Strings {
         System.out.println(stringLiteral.equals(stringObject)); // false
         System.out.println(stringLiteral.equalsIgnoreCase(stringObject));
 
-        // trim: elimina espacios en blanco
+        // trim: elimina espacios en blanco al inicio y al final del String
         System.out.println(stringLiteral.trim());
 
         // replace
