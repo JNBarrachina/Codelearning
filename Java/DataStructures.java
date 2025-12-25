@@ -1,10 +1,17 @@
 //? ESTRUCTURAS DE DATOS
 
 import java.util.Arrays;
+
+import java.util.List;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedList;
+
+import java.util.Map;
+import java.util.HashMap;
+
+import java.util.Set;
+import java.util.HashSet;
+
 import java.util.Queue;
 import java.util.Stack;
 
@@ -53,7 +60,7 @@ public class DataStructures {
         // * ArrayList: listas dinámicas
 
         var numsList = new ArrayList<Integer>();
-        ArrayList<String> namesList = new ArrayList<>();
+        List<String> namesList = new ArrayList<>();
 
         // Agregar elementos
         numsList.add(15);
