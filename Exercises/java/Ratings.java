@@ -14,6 +14,7 @@ public class Ratings {
         generateRandomData();
         int userNum = initRatings();
         showUserChoice(userNum);
+        read.close();
     }
 
     static void generateRandomData() {
@@ -32,7 +33,7 @@ public class Ratings {
         int userNum = 0;
         boolean valid = false;
 
-        System.out.println("REVIEW RATINGS: Selecciona una pregunta a revisar (1-" + numQuestions);
+        System.out.println("REVIEW RATINGS: Selecciona una pregunta a revisar (1-" + numQuestions + ")");
 
         while (!valid) {
             if (read.hasNextInt()) {
@@ -59,14 +60,20 @@ public class Ratings {
         System.out.println(selectedQuestion);
 
         for (Map.Entry<Integer, Integer> entry : selectedQuestion.entrySet()) {
-            System.out.println(
-                    "Rating " + entry.getKey() +
-                            " → " + entry.getValue());
+            System.out.println("Rating " + entry.getKey() + " → " + transformRates(entry.getValue()));
         }
-
     }
 
     static int randomUserRates() {
-        return (int) (Math.random() * 20);
+        return (int) (Math.random() * 10);
+    }
+
+    static String transformRates(int rates) {
+        String stringRates = "";
+        for (int i = 0; i < rates; i++) {
+            stringRates = stringRates + "*";
+        }
+
+        return stringRates;
     }
 }
