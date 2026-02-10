@@ -41,4 +41,24 @@ numbersArray.forEach((number) => console.log(number));
 //* Reduce: Devuelve un nuevo array con los elementos modificados (calcular un valor derivado de un array)
 const reduceNumber = numbersArray.reduce((num1, num2) => { console.log(`Acumulador: ${num1} - Elemento: ${num2} - Resultado: ${num1 + num2}`); return num1 + num2 }); // Reduce recorre los elementos desde el último hasta el primero. Para hacerlo de izquierda a derecha: reduceRight.
 
-console.log(reduceNumber); 
+console.log(reduceNumber);
+
+
+//* Sort: Ordena el array
+const unsortedArray = [10, 1, 23, 14, 124, 12, 5, 54];
+const sortNumbers = unsortedArray.sort((num1, num2) => num1 - num2);
+console.log(sortNumbers);
+
+
+//* Flat: Devuelve un nuevo array, aplanando array anidados desde el nivel indicado
+let nestedArray = [[1, 2], [3, [4]], [5, 6]];
+
+const flatArray = nestedArray.flat(1); // Aplanar 1 subnivel
+console.log(flatArray);
+
+
+//* FlatMap: Devuelve un nuevo array, aplanando array anidados desde el nivel indicado y aplicando una funcion a cada elemento
+const words = ["hola", "mundo", "JavaScript"];
+
+const flatMapArray = words.flatMap((word) => word.split(""));
+console.log(flatMapArray);

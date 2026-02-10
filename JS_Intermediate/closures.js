@@ -7,9 +7,14 @@ function saludar(name) {
     return function () {
         console.log(`${saludo}, ${name}. Este es el saludo ${greetNum++}`);
     }
+
+    //? El contexto de la función se guarda en cada llamada, por lo que el número incrementará aunque greetNum sea inicializado en 0.
 }
 
+
+
 let saludarJohn = saludar("John");  //Función que devuelve otra función
-saludarJohn();  //Ejecutamos la segunda función
-saludar("John")();  //Ejecutamos directamente la segunda función
+saludarJohn();
+saludarJohn();
+saludarJohn();
 
