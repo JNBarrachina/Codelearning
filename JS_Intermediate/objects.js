@@ -22,6 +22,12 @@ console.log(myObject["age"]);
 myObject.name = "Jane";
 myObject["age"] = 25;
 
+//* Keys, Values
+let keys = Object.keys(myObject);
+let values = Object.values(myObject);
+
+console.log(keys);
+console.log(values);
 
 //* Eliminación de propiedades de un objeto
 delete myObject.city;
