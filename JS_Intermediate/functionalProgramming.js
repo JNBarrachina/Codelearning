@@ -1,5 +1,26 @@
 //? PROGRAMACIÓN FUNCIONAL
 
+//* Estilo imperativo vs declarativo
+
+//Imperativo
+class Dog {
+    name = "dog"
+}
+
+let oop_dogs = []
+
+for (let index = 0; index < 5; index++) {
+    oop_dogs.push(new Dog())
+}
+
+
+//Declarativo 
+function dog() {
+    return { name: "dog" }
+}
+
+let fp_dogs = Array(5).fill().map(() => dog())
+
 
 //* Funcionas puras: predecibles y sin efectos colaterales
 function addSeven(num) {
@@ -29,7 +50,7 @@ console.log(dataPure);
 
 
 //* Funciones de orden superior: funciones que operan sobre otras funciones
-function repetir(fn, num) {  //Recoge dos parámetros, donde el primero es uuna función que se ejecutará y el segundo es un número.
+function repetir(fn, num) {  //Recoge dos parámetros, donde el primero es una función que se ejecutará y el segundo es un número.
     for (let i = 0; i < num; i++) {
         fn();
     }

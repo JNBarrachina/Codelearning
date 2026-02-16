@@ -11,10 +11,13 @@ function saludar(name) {
     //? El contexto de la función se guarda en cada llamada, por lo que el número incrementará aunque greetNum sea inicializado en 0.
 }
 
+function greetNumber() {
+    console.log(greetNum);
+} //! Error: la función no puede acceder a la variable, ya que esta pertenece a otro scope (está dentro de la función saludar())
 
 
 let saludarJohn = saludar("John");  //Función que devuelve otra función
 saludarJohn();
 saludarJohn();
 saludarJohn();
-
+greetNumber();

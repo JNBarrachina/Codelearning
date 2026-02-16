@@ -4,13 +4,13 @@
 class Person {  //! Al crear una clase, en realidad usamos el modelo de prototipos,
 
     validate = false; //Propiedad común para todas las instancias de la clase
-    _userKeyword = "secret"; //Propiedad privada //!(No es verdaderamente privada, es una convención para indicar que no se tiene intención de usar la propiedad fuera de la clase)
+    #userKeyword = "secret"; //Propiedad privada
 
     //*Alternativa para propiedades y métodos privados: #
 
     constructor(name, age, email) {  //El constructor me obliga a crear las propiedades de la clase
         this.name = name;
-        this.age = age;
+        this._age = age; //! Con _  la propiedad nunca será realmente privada; es una convención.
         this.email = email;
     }
 
@@ -22,20 +22,22 @@ class Person {  //! Al crear una clase, en realidad usamos el modelo de prototip
         return this.age >= 18;
     }
 
-    // set age(value) {
-    //     if (value < 0 || value !== "number") {
-    //         throw new Error("Invalid age");
-    //     } else {
-    //         this._age = value;
-    //     }
-    // }
+    set age(value) {
+        if (value < 0 || value !== "number") {
+            throw new Error("Invalid age");
+        } else {
+            this._age = value;
+        }
+    }
 
-    // get age() {
-    //     return this._age;
-    // }
+    get age() {
+        return this._age;
+    }
 }
 
-let myPerson = new Person(name = "John", age = 30, email = "john@john.com");
+let myPerson = new Person("John", 30, "john@john.com");
+console.log(myPerson)
+// console.log(myPerson.#userKeyword) //Error: no se puede acceder a la propiedad privada
 
 
 //*Propiedades y métodos estáticos
@@ -153,14 +155,43 @@ console.log(logger1 === logger2);
 
 
 //* Symbol (Identificador exclusivo para propiedades privadas; mejor utilizar #)
-const playerID = Symbol("id");
+// const playerID = Symbol("id");
 
-class Player {
-    constructor(name, score) {
-        this.name = name;
-        this[id] = score;
+// class Player {
+//     constructor(name, score) {
+//         this.name = name;
+//         this[id] = score;
+//     }
+// }
+
+// let player = new Player("John", 100);
+// console.log(player[id]); // Propiedad privada: no tenemos acceso a priori
+
+
+//* Proxy
+
+const proxy = {
+    get(target, property) {
+        return target[property]
+    },
+    set(target, property, value) {
+        if (property === `balance` && value < 0) {
+            throw new Error("El saldo no puede ser negativo")
+        }
+
+        target[property] = value
     }
 }
 
-let player = new Player("John", 100);
-console.log(player[id]); // Propiedad privada: no tenemos acceso a priori
+class BankAccount {
+    constructor(balance) {
+        this.balance = balance
+    }
+}
+
+const account = new Proxy(new BankAccount(100), proxy)
+console.log(account.balance)
+
+// account.balance = -40  ERROR
+account.balance = 1000
+console.log(account.balance)
