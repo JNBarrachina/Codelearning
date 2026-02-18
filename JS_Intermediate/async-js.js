@@ -36,3 +36,22 @@ async function checkNumber() {
 }
 
 checkNumber()
+
+//Fetch with async-await
+async function getDBCharacter() {
+    try {
+        const API_URL = "https://dragonball-api.com/api/characters"
+        const response = await fetch(`${API_URL}/1`)
+
+        if (!response.ok) {
+            throw new Error(`Error HTTP: ${response.status} ${response.statusText}`)
+        }
+
+        const data = await response.json()
+        console.log(data)
+    } catch (error) {
+        console.log('Error', error)
+    }
+}
+
+getDBCharacter()
