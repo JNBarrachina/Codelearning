@@ -9,3 +9,10 @@ function curriedSum(a) {
 }
 
 console.log(curriedSum(1)(2)(3));
+
+const altCurriedSum = a => b => c => {
+    console.log("Realizando suma...")
+    return a + b + c
+}
+
+console.log(altCurriedSum(21)(22)(35))
