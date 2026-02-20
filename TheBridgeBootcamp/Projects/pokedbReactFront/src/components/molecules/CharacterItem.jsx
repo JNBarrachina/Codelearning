@@ -2,30 +2,17 @@ import { useContext } from "react"
 import "./CharacterItem.scss"
 import { ThemeContext } from "../../contexts/ThemeContext"
 
-export const CharacterItem = ({name, img}) => {
+export const CharacterItem = ({ name, img }) => {
 
-    const {theme, setTheme} = useContext(ThemeContext)
+    const { theme } = useContext(ThemeContext)
 
-    const characterBoxClass = () => {
-        if (theme == "dark"){
-            return "characterBox characterBox-dark"
-        } else {
-            return "characterBox characterBox-light"
-        }
-    }
+    const characterBoxClass = theme === "dark" ? "characterBox characterBox-dark" : "characterBox characterBox-light"
+    const nameClass = theme === "dark" ? "characterName characterName-dark" : "characterName characterName-light"
 
-    const nameClass = () => {
-        if (theme == "dark"){
-            return "characterName characterName-dark"
-        } else {
-            return "characterName characterName-light"
-        }
-    }
-    
     return (
-        <article className={characterBoxClass()}>
-            <p className={nameClass()}>{name.toUpperCase()}</p>
-            <img src={img} alt="" className="characterImg"/>
+        <article className={characterBoxClass}>
+            <p className={nameClass}>{name.toUpperCase()}</p>
+            <img src={img} alt="" className="characterImg" />
         </article>
     )
 }
