@@ -1,16 +1,11 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-
-import { Counter } from './components/Counter'
 
 import { store } from './store'
 import { Provider } from 'react-redux'
 
-function App() {
-  const [count, setCount] = useState(0)
+import { Counter } from './components/Counter'
 
+function App() {
   return (
     <>
       <Provider store={store}>
