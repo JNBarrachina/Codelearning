@@ -1,6 +1,6 @@
 package OOP;
 
-public class Abstraction {
+public class AbstractionInterface {
 
     public static void main(String[] args) {
 

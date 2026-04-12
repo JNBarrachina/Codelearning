@@ -43,7 +43,7 @@ public class Person {
     }
 
     /**
-     * Encapsulamiento y Modificadores de Acceso 1. Public: Puede ser accedidodesde
+     * Encapsulamiento y Modificadores de Acceso 1. Public: Puede ser accedido desde
      * cualquier parte; 2. Private: Solo puede ser accedido desde la propia clase;
      * 3. Protected: Solo puede ser accedido desde la propia clase y desde las
      * clases heredadas.
